@@ -1,15 +1,15 @@
 package pt.luis.blogapp.api.mappers;
 
 
-import pt.luis.blogapp.api.dto.UserCreateDTO;
-import pt.luis.blogapp.api.dto.UserResponseDTO;
-import pt.luis.blogapp.api.dto.UserUpdateDTO;
+import pt.luis.blogapp.api.dto.CreateUserDTO;
+import pt.luis.blogapp.api.dto.ResponseUserDTO;
+import pt.luis.blogapp.api.dto.UpdateUserDTO;
 import pt.luis.blogapp.api.entities.User;
 import pt.luis.blogapp.api.infrastructure.security.Password;
 
 public class UserMapper {
 
-    public static User toEntity(UserCreateDTO dto){
+    public static User toEntity(CreateUserDTO dto){
 
         if(dto == null){
             return null;
@@ -24,13 +24,13 @@ public class UserMapper {
 
 
 
-    public static UserResponseDTO toResponse(User user){
+    public static ResponseUserDTO toResponse(User user){
 
         if (user == null) {
             return null;
         }
 
-        return new UserResponseDTO(
+        return new ResponseUserDTO(
                 user.getId(),
                 user.getUsername(),
                 user.getEmail(),
@@ -39,7 +39,7 @@ public class UserMapper {
         );
     }
 
-    public static void updateEntity(UserUpdateDTO dto, User user){
+    public static void updateEntity(UpdateUserDTO dto, User user){
 
         if(dto == null || user == null){
             return;
