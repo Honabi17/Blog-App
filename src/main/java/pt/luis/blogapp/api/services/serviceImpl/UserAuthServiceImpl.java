@@ -1,5 +1,6 @@
 package pt.luis.blogapp.api.services.serviceImpl;
 
+import org.springframework.stereotype.Service;
 import pt.luis.blogapp.api.dto.AuthResponseDTO;
 import pt.luis.blogapp.api.dto.CreateUserDTO;
 import pt.luis.blogapp.api.dto.LoginRequestDTO;
@@ -14,6 +15,7 @@ import pt.luis.blogapp.api.services.UserAuthService;
 
 import java.util.Optional;
 
+@Service
 public class UserAuthServiceImpl implements UserAuthService {
 
     private UserRepository userRepository;
