@@ -1,0 +1,11 @@
+[33m28d6c81[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m)[m feat(security): adiciona autenticação JWT e configuração de segurança.
+[33m064729d[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m feat(user): implement user controller and service.
+[33mc3e8b3a[m feat: add user repository.
+[33ma2221b8[m feat: add user mapper.
+[33ma3337c6[m feat(auth): implement authentication service
+[33m4bbb546[m feat(auth): add authentication controller.
+[33m2f77398[m feat: add global exception handling and custom exceptions.
+[33mc3eedbb[m feat(auth): add authentications DTOs.
+[33m4a71711[m refactor: standardize user DTO naming(CreateUserDTO, ResponseUserDTO, UpdateUserDTO).
+[33m3b0cae5[m feat: Implement UserMapper, DTO's for Create, Response and Update, README and SecurityConfig
+[33m4955f9b[m JPA Entities and Spring structure
