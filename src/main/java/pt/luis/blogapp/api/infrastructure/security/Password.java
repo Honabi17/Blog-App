@@ -44,4 +44,8 @@ public class Password {
             throw new IllegalArgumentException("Invalid hash!");
         }
     }
+
+    public String getHash(){
+        return hash;
+    }
 }
