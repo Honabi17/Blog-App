@@ -7,6 +7,7 @@ the Spring Boot framework.
 ## 🛠️ Technologies used:
 - **Java 17**
 - **Spring Boot 4.0.3**
+- **Spring Web**
 - **Spring Data JPA**
 - **H2 Database**
 - **Maven**
@@ -17,16 +18,48 @@ the Spring Boot framework.
 This is an API project for a blog system, developed in **Java** using the 
 **Spring Boot** framework.
 
-- [x] Initial Spring Boot configuration.
-- [x] JPA Entity Mapping(`User`, `Person`, `Category`, `Post`, `Comment`).
-- [x] Defining Relationships  `@OneToOne`, `@OneToMany`, `@ManyToOne`.
-
-### 🔗 Data Relationships:
-- **@OneToOne:** Each `User` has unique `Profile`, ensuring the separation
-of authentication data and personal data.
-- **@OneToMany:** A `User` can published multiple `Posts`.
-- **@ManyToOne:** Multiple `Posts` can belong to a single `Category`.
-- **@OneToMany:** A `Post` can receive multiple `Comments`. 
+```
+src/main/java/pt/luis/blogapp/api 
+├── controllers 
+│ ├── UserAuthController.java 
+│ └── UserController.java 
+├── dto 
+│ ├── AuthResponseDTO.java 
+│ ├── CreateUserDTO.java 
+│ ├── LoginRequestDTO.java 
+│ ├── ResponseUserDTO.java 
+│ └── UpdateUserDTO.java 
+├── entities 
+│ ├── entity 
+│ │ └── BaseEntity.java 
+│ ├── role 
+│ │ └── UserRole.java 
+│ ├── Category.java 
+│ ├── Comment.java 
+│ ├── Person.java 
+│ ├── Post.java 
+│ └── User.java 
+├── exceptions 
+│ ├── ApiErrorResponse.java 
+│ ├── GlobalExceptionHandler.java 
+│ ├── ResourceNotFoundException.java 
+│ └── UserValidationException.java 
+├── infrastructure 
+│ └── security 
+│ ├── Password.java 
+│ ├── PasswordHasher.java 
+│ └── SecurityConfig.java 
+├── mappers 
+│ └── UserMapper.java 
+├── repositories 
+│ └── UserRepository.java 
+└── services 
+├── serviceImpl 
+│ ├── UserAuthServiceImpl.java 
+│ └── UserServiceImpl.java 
+├── UserAuthService.java 
+└── UserService.java
+```
 
 ## ⚙️ How To Execute:
 - 1 - Clones the repository.
