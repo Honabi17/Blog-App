@@ -8,7 +8,10 @@ import pt.luis.blogapp.api.dto.ResponseUserDTO;
 import pt.luis.blogapp.api.entities.User;
 import pt.luis.blogapp.api.exceptions.ResourceNotFoundException;
 import pt.luis.blogapp.api.exceptions.UserValidationException;
+import pt.luis.blogapp.api.infrastructure.security.CustomUserDetails;
+import pt.luis.blogapp.api.infrastructure.security.JwtService;
 import pt.luis.blogapp.api.infrastructure.security.Password;
+import pt.luis.blogapp.api.infrastructure.security.PasswordHasher;
 import pt.luis.blogapp.api.mappers.UserMapper;
 import pt.luis.blogapp.api.repositories.UserRepository;
 import pt.luis.blogapp.api.services.UserAuthService;
@@ -18,10 +21,18 @@ import java.util.Optional;
 @Service
 public class UserAuthServiceImpl implements UserAuthService {
 
-    private UserRepository userRepository;
+    private final UserRepository userRepository;
+    private final PasswordHasher passwordHasher;
+    private final JwtService jwtService;
 
-    public UserAuthServiceImpl(UserRepository userRepository){
+    public UserAuthServiceImpl(
+            UserRepository userRepository,
+            PasswordHasher passwordHasher,
+            JwtService jwtService
+    ){
         this.userRepository =  userRepository;
+        this.passwordHasher = passwordHasher;
+        this.jwtService = jwtService;
     }
 
 
@@ -60,10 +71,15 @@ public class UserAuthServiceImpl implements UserAuthService {
     public AuthResponseDTO login(LoginRequestDTO dto) {
 
        User user = userRepository.findByUsername(dto.username())
-               .filter(u -> u.getPassword().matches(dto.password()))
                .orElseThrow(() -> new ResourceNotFoundException("Invalid credentials"));
 
-       String token = "Token aqui";
+       if(!PasswordHasher.matches(dto.password(), user.getPassword().getHash())){
+           throw new ResourceNotFoundException("Invalid credentials!");
+       }
+
+       CustomUserDetails userDetails = new CustomUserDetails(user);
+
+       String token = jwtService.generateToken(userDetails);
 
         return new AuthResponseDTO(token);
     }
