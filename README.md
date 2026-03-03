@@ -1,14 +1,16 @@
 # Blog App API 🚀
 
 This is my final course project for a Blog system API, developed in Java using
-the Spring Boot framework.
+the **Spring Boot** framework.
+It includes JWT authentication, a role system (USER, MODERATOR, ADMIN), user management, and protected endpoints.
 
 
 ## 🛠️ Technologies used:
 - **Java 17**
-- **Spring Boot 4.0.3**
+- **Spring Boot 3.2.3**
 - **Spring Web**
 - **Spring Data JPA**
+- **Spring Security + JWT**
 - **H2 Database**
 - **Maven**
 
@@ -21,14 +23,16 @@ This is an API project for a blog system, developed in **Java** using the
 ```
 src/main/java/pt/luis/blogapp/api 
 ├── controllers 
+│ ├── AdminController.java
 │ ├── UserAuthController.java 
 │ └── UserController.java 
 ├── dto 
 │ ├── AuthResponseDTO.java 
 │ ├── CreateUserDTO.java 
 │ ├── LoginRequestDTO.java 
-│ ├── ResponseUserDTO.java 
-│ └── UpdateUserDTO.java 
+│ ├── ResponseUserDTO.java
+│ ├── UpdateEmailDTO.java 
+│ └── UpdatePasswordDTO.java 
 ├── entities 
 │ ├── entity 
 │ │ └── BaseEntity.java 
@@ -36,6 +40,7 @@ src/main/java/pt/luis/blogapp/api
 │ │ └── UserRole.java 
 │ ├── Category.java 
 │ ├── Comment.java 
+│ ├── PasswordResetToken.java
 │ ├── Person.java 
 │ ├── Post.java 
 │ └── User.java 
@@ -46,17 +51,26 @@ src/main/java/pt/luis/blogapp/api
 │ └── UserValidationException.java 
 ├── infrastructure 
 │ └── security 
-│ ├── Password.java 
-│ ├── PasswordHasher.java 
-│ └── SecurityConfig.java 
+│ │  ├── CustomUserDetails.java
+│ │  ├── CustomUserDetailsService.java
+│ │  ├── JwtAuthFilter.java
+│ │  ├── JwtService.java
+│ │  ├── Password.java 
+│ │  ├── PasswordHasher.java
+│ │  ├── ResetPasswordConfirmDTO.java
+│ │  ├── ResetPasswordRequestDTO.java 
+│ │  └── SecurityConfig.java 
 ├── mappers 
 │ └── UserMapper.java 
 ├── repositories 
+│ ├── TokenRepository.java
 │ └── UserRepository.java 
 └── services 
-├── serviceImpl 
+├── serviceImpl
+│ ├── EmailServiceImpl.java 
 │ ├── UserAuthServiceImpl.java 
 │ └── UserServiceImpl.java 
+├── EmailService.java
 ├── UserAuthService.java 
 └── UserService.java
 ```
