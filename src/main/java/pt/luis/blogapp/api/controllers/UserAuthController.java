@@ -4,36 +4,49 @@ import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import pt.luis.blogapp.api.dto.AuthResponseDTO;
-import pt.luis.blogapp.api.dto.CreateUserDTO;
-import pt.luis.blogapp.api.dto.LoginRequestDTO;
-import pt.luis.blogapp.api.dto.ResponseUserDTO;
+import pt.luis.blogapp.api.dto.*;
+import pt.luis.blogapp.api.infrastructure.security.ResetPasswordConfirmDTO;
+import pt.luis.blogapp.api.infrastructure.security.ResetPasswordRequestDTO;
 import pt.luis.blogapp.api.services.UserAuthService;
 
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/auth")
 public class UserAuthController {
 
-    private final UserAuthService userAuthService;
+    private final UserAuthService authService;
 
     public UserAuthController(UserAuthService userAuthService){
 
-        this.userAuthService = userAuthService;
+        this.authService = userAuthService;
     }
 
 
     @PostMapping("/register")
     public ResponseEntity<ResponseUserDTO> created(@Valid @RequestBody CreateUserDTO dto) {
 
-        ResponseUserDTO created = userAuthService.created(dto);
+        ResponseUserDTO created = authService.created(dto);
         return ResponseEntity.status(HttpStatus.CREATED).body(created);
     }
 
     @PostMapping("/login")
     public ResponseEntity<AuthResponseDTO> login(@RequestBody LoginRequestDTO request) {
 
-        AuthResponseDTO login = userAuthService.login(request);
+        AuthResponseDTO login = authService.login(request);
         return ResponseEntity.ok(login);
+    }
+
+    @PostMapping("/reset-password/request")
+    public ResponseEntity<String> requestReset(@RequestBody ResetPasswordRequestDTO dto){
+
+        authService.requestReset(dto.email());
+        return ResponseEntity.ok("Reset email send");
+    }
+
+    @PostMapping("/reset-password/confirm")
+    public ResponseEntity<String> confirmReset(@RequestBody ResetPasswordConfirmDTO dto){
+
+        authService.confirmPassword(dto);
+        return ResponseEntity.ok("Password updated successfully");
     }
 }
