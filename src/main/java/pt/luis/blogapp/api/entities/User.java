@@ -35,7 +35,7 @@ public class User extends BaseEntity {
     private String email;
 
     @JsonIgnore
-    @Column(nullable = false)
+    @Embedded
     private Password password;
 
     @Enumerated(EnumType.STRING)

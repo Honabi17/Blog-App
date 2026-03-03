@@ -2,6 +2,7 @@ package pt.luis.blogapp.api.infrastructure.security;
 
 
 import org.springframework.security.crypto.bcrypt.BCrypt;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
@@ -9,22 +10,24 @@ import org.springframework.stereotype.Component;
 @Component
 public class PasswordHasher implements PasswordEncoder {
 
-    public static String hash(String rawPassword) {
-        return BCrypt.hashpw(rawPassword, BCrypt.gensalt());
-    }
-
-    public static boolean matches(String rawPassword, String encodedPassword) {
-        return BCrypt.checkpw(rawPassword, encodedPassword);
-    }
+    private final BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 
     @Override
     public String encode(CharSequence rawPassword) {
-        return hash(rawPassword.toString());
+        return encoder.encode(rawPassword);
     }
 
     @Override
     public boolean matches(CharSequence rawPassword, String encodedPassword) {
-        return matches(rawPassword.toString(), encodedPassword);
+        return matches(rawPassword, encodedPassword);
+    }
+
+    public String hash(String rawPassword){
+        return encoder.encode(rawPassword);
+    }
+
+    public boolean matches(String rawPassword, String encodedPassword){
+        return encoder.matches(rawPassword, encodedPassword);
     }
 }
 
