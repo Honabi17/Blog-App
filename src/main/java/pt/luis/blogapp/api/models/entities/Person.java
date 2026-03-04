@@ -9,7 +9,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.validator.constraints.URL;
 import pt.luis.blogapp.api.models.entities.entity.BaseEntity;
-import java.time.LocalDateTime;
+
+import java.time.LocalDate;
 
 
 @Entity
@@ -30,13 +31,13 @@ public class Person extends BaseEntity {
     private String avatarUrl;
 
     @Past
-    private LocalDateTime birthDate;
+    private LocalDate birthDate;
 
 
     @OneToOne
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
-    @OneToOne(mappedBy = "person", cascade = CascadeType.ALL)
+    @OneToOne(mappedBy = "person", cascade = CascadeType.ALL, orphanRemoval = true)
     private PersonStats stats;
 }
