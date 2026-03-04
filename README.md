@@ -13,7 +13,21 @@ It includes JWT authentication, a role system (USER, MODERATOR, ADMIN), user man
 - **Spring Security + JWT**
 - **H2 Database**
 - **Maven**
+- **ModelMapper**
 
+
+## 🧱 Project Architecture:
+
+The project follows a modular architecture, organized by responsibilities:
+
+- Controllers - API input layer (REST Controllers).
+- DTO - Data transfer objects.
+- Models/Entities - JPA entities.
+- Repositories - Database access interfaces
+- Services - Business rules.
+- Infrastructure/Security - Security configurations, JWT, hashing.
+- Exceptions - Global error handling.
+- Mappers - Conversion between entities and DTO's.
 
 ## 📋 Project Structure:
 
@@ -23,57 +37,99 @@ This is an API project for a blog system, developed in **Java** using the
 ```
 src/main/java/pt/luis/blogapp/api 
 ├── controllers 
-│ ├── AdminController.java
-│ ├── UserAuthController.java 
-│ └── UserController.java 
+│   ├── personControllers
+│   │   └── PersonController.java
+│   └── userControllers
+│       ├── AdminController.java
+│       ├── UserAuthController.java 
+│       └── UserController.java 
+│
 ├── dto 
-│ ├── AuthResponseDTO.java 
-│ ├── CreateUserDTO.java 
-│ ├── LoginRequestDTO.java 
-│ ├── ResponseUserDTO.java
-│ ├── UpdateEmailDTO.java 
-│ └── UpdatePasswordDTO.java 
-├── entities 
-│ ├── entity 
-│ │ └── BaseEntity.java 
-│ ├── role 
-│ │ └── UserRole.java 
-│ ├── Category.java 
-│ ├── Comment.java 
-│ ├── PasswordResetToken.java
-│ ├── Person.java 
-│ ├── Post.java 
-│ └── User.java 
+│   ├── personDTO
+│   │   ├── CreatePersonDTO.java
+│   │   ├── PersonStatsDTO.java
+│   │   ├── ProfileDTO.java
+│   │   └── UpdatePersonDTO.java
+│   └── userDTO
+│       ├── AuthResponseDTO.java 
+│       ├── CreateUserDTO.java 
+│       ├── LoginRequestDTO.java 
+│       ├── ResetPasswordConfirmDTO.java
+│       ├── ResetPasswordRequestDTO.java
+│       ├── ResponseUserDTO.java
+│       ├── UpdateEmailDTO.java 
+│       ├── UpdatePasswordDTO.java 
+│       └── UpdateRoleDTO.java
+│
 ├── exceptions 
-│ ├── ApiErrorResponse.java 
-│ ├── GlobalExceptionHandler.java 
-│ ├── ResourceNotFoundException.java 
-│ └── UserValidationException.java 
+│   ├── BadRequestException.java
+│   ├── ResourceNotFoundException.java 
+│   ├── UserValidationException.java
+│   ├── ApiErrorResponse.java 
+│   └── GlobalExceptionHandler.java 
+│
 ├── infrastructure 
-│ └── security 
-│ │  ├── CustomUserDetails.java
-│ │  ├── CustomUserDetailsService.java
-│ │  ├── JwtAuthFilter.java
-│ │  ├── JwtService.java
-│ │  ├── Password.java 
-│ │  ├── PasswordHasher.java
-│ │  ├── ResetPasswordConfirmDTO.java
-│ │  ├── ResetPasswordRequestDTO.java 
-│ │  └── SecurityConfig.java 
+│   └── securities
+│       ├── password
+│       │   ├── Password.java
+│       │   └── PasswordHasher.java
+│       └── security
+│           ├── CustomUserDetails.java
+│           ├── CustomUserDetailsService.java
+│           ├── JwtAuthFilter.java
+│           ├── JwtService.java
+│           └── SecurityConfig.java 
+│
 ├── mappers 
-│ └── UserMapper.java 
+│   ├── PersonMapper.java
+│   └── UserMapper.java 
+│
+├── models 
+│   ├── entities
+│   │   └── entity
+│   │       ├── BaseEntity.java 
+│   │       ├── Category.java 
+│   │       ├── Comment.java 
+│   │       ├── PasswordResetToken.java
+│   │       ├── Person.java 
+│   │       ├── PersonStats.java
+│   │       ├── Post.java 
+│   │       └── User.java 
+│   └── role
+│       └── UserRole.java
+│
 ├── repositories 
-│ ├── TokenRepository.java
-│ └── UserRepository.java 
+│   ├── personRepositories
+│   │   └── PersonRepository.java
+│   └── userRepositories
+│       ├── TokenRepository.java
+│       └── UserRepository.java 
+│
 └── services 
-├── serviceImpl
-│ ├── EmailServiceImpl.java 
-│ ├── UserAuthServiceImpl.java 
-│ └── UserServiceImpl.java 
-├── EmailService.java
-├── UserAuthService.java 
-└── UserService.java
+    ├── personService
+    │   ├── PersonService.java
+    │   └── PersonServiceImpl.java
+    └── userServices
+        ├── EmailService.java
+        ├── UserAuthService.java 
+        ├── UserService.java
+        └── serviceImpl
+            ├── EmailServiceImpl.java 
+            ├── UserAuthServiceImpl.java 
+            └── UserServiceImpl.java 
+
 ```
+
+## 🔐 Main Features: 
+- User registration and authentication with JWT.
+- Password recovery via email.
+- Role system: USER, MODERATOR, ADMIN.
+- User and profile management.
+- Management of posts, categories and comments.
+- User statistics.
+- Global filters and validations.
+- Secure password hashing.
+
 
 ## ⚙️ How To Execute:
 - 1 - Clones the repository.
