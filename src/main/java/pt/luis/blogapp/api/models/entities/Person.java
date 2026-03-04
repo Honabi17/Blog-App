@@ -1,9 +1,6 @@
-package pt.luis.blogapp.api.entities;
+package pt.luis.blogapp.api.models.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.Past;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
@@ -11,7 +8,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.validator.constraints.URL;
-import pt.luis.blogapp.api.entities.entity.BaseEntity;
+import pt.luis.blogapp.api.models.entities.entity.BaseEntity;
 import java.time.LocalDateTime;
 
 
@@ -39,4 +36,7 @@ public class Person extends BaseEntity {
     @OneToOne
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
+
+    @OneToOne(mappedBy = "person", cascade = CascadeType.ALL)
+    private PersonStats stats;
 }
