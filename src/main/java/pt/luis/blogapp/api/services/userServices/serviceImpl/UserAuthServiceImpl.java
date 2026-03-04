@@ -1,5 +1,6 @@
 package pt.luis.blogapp.api.services.userServices.serviceImpl;
 
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import pt.luis.blogapp.api.dto.userDTO.*;
@@ -49,6 +50,25 @@ public class UserAuthServiceImpl implements UserAuthService {
         this.emailService = emailService;
     }
 
+    private void ensureUsernameAvailable(String username){
+        userRepository.findByUsername(username)
+                .ifPresent(u -> {
+                    throw new UserValidationException("Username already exists!");
+                });
+    }
+
+    private void ensureEmailAvailable(String email){
+        userRepository.findByEmail(email)
+                .ifPresent(e -> {
+                    throw new UserValidationException("Email already exists!");
+                });
+    }
+
+    private User findByUsernameOrThrow(String username){
+        return  userRepository.findByUsername(username)
+                .orElseThrow(() -> new ResourceNotFoundException("Invalid credentials!"));
+    }
+
 
     @Override
     public ResponseUserDTO created(CreateUserDTO dto) {
@@ -61,15 +81,8 @@ public class UserAuthServiceImpl implements UserAuthService {
                 .filter(e -> !e.isBlank())
                 .orElseThrow(() -> new UserValidationException("Email can't be null or empty"));
 
-        userRepository.findByUsername(dto.username())
-                .ifPresent(u -> {
-                    throw new UserValidationException("Username already exists!");
-                });
-
-        userRepository.findByEmail(dto.email())
-                .ifPresent(e -> {
-                    throw new UserValidationException("Email already exists!");
-                });
+        ensureUsernameAvailable(dto.username());
+        ensureEmailAvailable(dto.email());
 
         String hashed = passwordHasher.hash(dto.password());
 
@@ -89,8 +102,7 @@ public class UserAuthServiceImpl implements UserAuthService {
     @Override
     public AuthResponseDTO login(LoginRequestDTO dto) {
 
-       User user = userRepository.findByUsername(dto.username())
-               .orElseThrow(() -> new ResourceNotFoundException("Invalid credentials"));
+       User user = findByUsernameOrThrow(dto.username());
 
        if(!passwordHasher.matches(dto.password(), user.getPassword().getHash())){
            throw new ResourceNotFoundException("Invalid credentials!");
@@ -127,21 +139,29 @@ public class UserAuthServiceImpl implements UserAuthService {
     @Override
     public String confirmPassword(ResetPasswordConfirmDTO dto) {
 
-        PasswordResetToken reset = tokenRepository.findByToken(dto.token())
+        PasswordResetToken resetToken = tokenRepository.findByToken(dto.token())
                 .orElseThrow(() -> new BadRequestException("Invalid token"));
 
-        if(reset.getExpiresAt().isBefore(LocalDateTime.now())){
+        if(resetToken.getExpiresAt().isBefore(LocalDateTime.now())){
             throw new BadRequestException("Token expired");
         }
 
-        User user = reset.getUser();
+        User user = resetToken.getUser();
 
         String hashed = passwordHasher.hash(dto.newPassword());
         user.setPassword(new Password(hashed));
         userRepository.save(user);
 
-        tokenRepository.delete(reset);
+        tokenRepository.delete(resetToken);
 
         return "Password updated successfully!";
+    }
+
+    @Override
+    public User getAuthenticatedUser() {
+
+        String username = SecurityContextHolder.getContext().getAuthentication().getName();
+
+        return findByUsernameOrThrow(username);
     }
 }

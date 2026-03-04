@@ -5,6 +5,7 @@ import pt.luis.blogapp.api.dto.userDTO.CreateUserDTO;
 import pt.luis.blogapp.api.dto.userDTO.LoginRequestDTO;
 import pt.luis.blogapp.api.dto.userDTO.ResponseUserDTO;
 import pt.luis.blogapp.api.dto.userDTO.ResetPasswordConfirmDTO;
+import pt.luis.blogapp.api.models.entities.User;
 
 public interface UserAuthService {
 
@@ -13,4 +14,6 @@ public interface UserAuthService {
 
     String requestReset(String email);
     String confirmPassword(ResetPasswordConfirmDTO dto);
+
+    public User getAuthenticatedUser();
 }
