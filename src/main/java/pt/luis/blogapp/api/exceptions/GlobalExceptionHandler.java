@@ -1,13 +1,13 @@
 package pt.luis.blogapp.api.exceptions;
 
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
-import org.springframework.http.ProblemDetail;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.ErrorResponse;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import pt.luis.blogapp.api.exceptions.Exceptions.BadRequestException;
+import pt.luis.blogapp.api.exceptions.Exceptions.ResourceNotFoundException;
+import pt.luis.blogapp.api.exceptions.Exceptions.UserValidationException;
 
 @ControllerAdvice
 public class GlobalExceptionHandler {

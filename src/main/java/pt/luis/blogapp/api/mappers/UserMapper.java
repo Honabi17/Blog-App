@@ -1,10 +1,10 @@
 package pt.luis.blogapp.api.mappers;
 
 
-import pt.luis.blogapp.api.dto.CreateUserDTO;
-import pt.luis.blogapp.api.dto.ResponseUserDTO;
-import pt.luis.blogapp.api.entities.User;
-import pt.luis.blogapp.api.infrastructure.security.Password;
+import pt.luis.blogapp.api.dto.userDTO.CreateUserDTO;
+import pt.luis.blogapp.api.dto.userDTO.ResponseUserDTO;
+import pt.luis.blogapp.api.models.entities.User;
+import pt.luis.blogapp.api.infrastructure.securities.password.Password;
 
 public class UserMapper {
 
