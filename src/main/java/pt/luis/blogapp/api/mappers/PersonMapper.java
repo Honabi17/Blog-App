@@ -43,15 +43,15 @@ public class PersonMapper {
 
     public static void updatePersonEntity(Person person, UpdatePersonDTO dto){
 
-        if(dto.firstName() != null){
+        if(dto.firstName() != null && dto.firstName().isBlank()){
             person.setFirstName(dto.firstName());
         }
 
-        if(dto.lastName() != null){
+        if(dto.lastName() != null && dto.lastName().isBlank()){
             person.setLastName(dto.lastName());
         }
 
-        if(dto.avatarUrl() != null){
+        if(dto.avatarUrl() != null && dto.avatarUrl().isBlank()){
             person.setAvatarUrl(dto.avatarUrl());
         }
 
