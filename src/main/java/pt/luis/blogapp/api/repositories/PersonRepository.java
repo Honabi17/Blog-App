@@ -1,4 +1,4 @@
-package pt.luis.blogapp.api.repositories.personReporitories;
+package pt.luis.blogapp.api.repositories;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
