@@ -1,6 +1,7 @@
 package pt.luis.blogapp.api.controllers.personControllers;
 
 
+import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -20,7 +21,7 @@ public class PersonController {
     }
 
     @PostMapping("/profile")
-    public ResponseEntity<ProfileDTO> createProfile(@RequestBody CreatePersonDTO dto){
+    public ResponseEntity<ProfileDTO> createProfile(@Valid @RequestBody CreatePersonDTO dto){
 
         ProfileDTO profile = personService.created(dto);
 
@@ -36,7 +37,7 @@ public class PersonController {
     }
 
     @PatchMapping("/profile")
-    public ResponseEntity<ProfileDTO> updateProfile(@RequestBody UpdatePersonDTO dto){
+    public ResponseEntity<ProfileDTO> updateProfile(@Valid @RequestBody UpdatePersonDTO dto){
 
         ProfileDTO update = personService.updated(dto);
 

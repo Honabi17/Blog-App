@@ -12,11 +12,9 @@ import pt.luis.blogapp.api.mappers.PersonMapper;
 import pt.luis.blogapp.api.models.entities.Person;
 import pt.luis.blogapp.api.models.entities.PersonStats;
 import pt.luis.blogapp.api.models.entities.User;
-import pt.luis.blogapp.api.repositories.personReporitories.PersonRepository;
+import pt.luis.blogapp.api.repositories.PersonRepository;
 import pt.luis.blogapp.api.repositories.userRepositories.UserRepository;
 import pt.luis.blogapp.api.services.userServices.UserAuthService;
-
-import java.time.LocalDateTime;
 
 
 @Service
