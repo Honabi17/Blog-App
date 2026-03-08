@@ -11,5 +11,7 @@ public record CreatePostDTO(
         String title,
 
         @NotBlank
-        String content
+        String content,
+
+        Long categoryId
 ) {}

@@ -10,6 +10,5 @@ public record UpdatePostDTO(
 
         String content,
 
-        User author
-) {
-}
+        Long categoryId
+) {}
