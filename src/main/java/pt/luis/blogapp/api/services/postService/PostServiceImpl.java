@@ -13,10 +13,12 @@ import pt.luis.blogapp.api.exceptions.Exceptions.AccessDeniedException;
 import pt.luis.blogapp.api.exceptions.Exceptions.ResourceAlreadyExistsException;
 import pt.luis.blogapp.api.exceptions.Exceptions.ResourceNotFoundException;
 import pt.luis.blogapp.api.mappers.PostMapper;
+import pt.luis.blogapp.api.models.entities.Category;
 import pt.luis.blogapp.api.models.entities.Post;
 import pt.luis.blogapp.api.models.entities.User;
 import pt.luis.blogapp.api.models.role.UserRole;
 import pt.luis.blogapp.api.repositories.PostRepository;
+import pt.luis.blogapp.api.services.categoryService.CategoryService;
 import pt.luis.blogapp.api.services.userServices.UserAuthService;
 import java.util.List;
 
@@ -27,14 +29,17 @@ public class PostServiceImpl implements PostService{
 
     private final PostRepository postRepository;
     private final UserAuthService authService;
+    private final CategoryService categoryService;
 
 
     public PostServiceImpl(
             PostRepository postRepository,
-            UserAuthService authService
+            UserAuthService authService,
+            CategoryService categoryService
     ){
         this.postRepository = postRepository;
         this.authService = authService;
+        this.categoryService = categoryService;
     }
 
     private  User currentUser(){
@@ -72,7 +77,11 @@ public class PostServiceImpl implements PostService{
 
         User user = currentUser();
 
+        Category category = categoryService.findById(dto.categoryId());
+
         Post post = PostMapper.toEntity(dto, user);
+
+        post.setCategory(category);
         postRepository.save(post);
 
         return PostMapper.toDTO(post);
@@ -125,6 +134,11 @@ public class PostServiceImpl implements PostService{
         ensureUserCanModifyPost(user, updatePost);
 
         PostMapper.updatePostEntity(dto, updatePost);
+
+        if(dto.categoryId() != null){
+            Category category = categoryService.findById(dto.categoryId());
+            updatePost.setCategory(category);
+        }
 
         postRepository.save(updatePost);
 
