@@ -40,6 +40,7 @@ public class CategoryServiceImpl implements CategoryService {
     }
 
     private User currentUser(){
+
         return authService.getAuthenticatedUser();
     }
 
@@ -57,6 +58,11 @@ public class CategoryServiceImpl implements CategoryService {
         if(!(isCreator || isModerator || isAdmin)){
             throw new AccessDeniedException("You are not allowed to modify this category");
         }
+    }
+
+    private Category findCategoryOrThrow(Long id){
+        return categoryRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Category not found with id: " + id));
     }
 
 
@@ -92,6 +98,10 @@ public class CategoryServiceImpl implements CategoryService {
 
         List<Category> categories = categoryRepository.findAllByCreatedBy(user);
 
+        if (categories.isEmpty()) {
+            throw new ResourceNotFoundException("User has no categories: " + username);
+        }
+
         return categories.stream()
                 .map(CategoryMapper::toDTO)
                 .toList();
@@ -110,34 +120,28 @@ public class CategoryServiceImpl implements CategoryService {
     @Override
     public CategoryResponseDTO updated(Long id, UpdateCategoryDTO dto) {
 
-        Category category = categoryRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException(
-                        "Category not found with id: " + id)
-                );
+        Category updateCategory = findCategoryOrThrow(id);
 
         User user = currentUser();
 
-        ensureUserCanModifyCategory(user, category);
+        ensureUserCanModifyCategory(user, updateCategory);
 
-        CategoryMapper.updateCategoryEntity(dto, category);
+        CategoryMapper.updateCategoryEntity(dto, updateCategory);
 
-        categoryRepository.save(category);
+        categoryRepository.save(updateCategory);
 
-        return CategoryMapper.toDTO(category);
+        return CategoryMapper.toDTO(updateCategory);
     }
 
     @Override
     public void deleted(Long id) {
 
-        Category category = categoryRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException(
-                        "Category not found with id: " + id)
-                );
+        Category deleteCategory = findCategoryOrThrow(id);
 
         User user = currentUser();
 
-        ensureUserCanModifyCategory(user, category);
+        ensureUserCanModifyCategory(user, deleteCategory);
 
-        categoryRepository.delete(category);
+        categoryRepository.delete(deleteCategory);
     }
 }

@@ -34,11 +34,11 @@ public class CategoryMapper {
 
     public static void updateCategoryEntity(UpdateCategoryDTO dto, Category category){
 
-        if(dto.name() != null && dto.name().isBlank()){
+        if(dto.name() != null && !dto.name().isBlank()){
             category.setName(dto.name());
         }
 
-        if (dto.description() != null && dto.description().isBlank()){
+        if (dto.description() != null && !dto.description().isBlank()){
             category.setDescription(dto.description());
         }
 
