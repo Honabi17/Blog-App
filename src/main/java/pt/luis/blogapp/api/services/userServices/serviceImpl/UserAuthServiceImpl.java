@@ -71,7 +71,7 @@ public class UserAuthServiceImpl implements UserAuthService {
 
 
     @Override
-    public ResponseUserDTO created(CreateUserDTO dto) {
+    public UserResponseDTO created(CreateUserDTO dto) {
 
         Optional.ofNullable(dto.username())
                 .filter(u -> !u.isBlank())

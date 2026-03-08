@@ -3,7 +3,7 @@ package pt.luis.blogapp.api.services.userServices.serviceImpl;
 
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
-import pt.luis.blogapp.api.dto.userDTO.ResponseUserDTO;
+import pt.luis.blogapp.api.dto.userDTO.UserResponseDTO;
 import pt.luis.blogapp.api.dto.userDTO.UpdateEmailDTO;
 import pt.luis.blogapp.api.dto.userDTO.UpdatePasswordDTO;
 import pt.luis.blogapp.api.models.entities.User;
@@ -35,7 +35,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public ResponseUserDTO getByUsername(String username) {
+    public UserResponseDTO getByUsername(String username) {
 
         User user = userRepository.findByUsername(username)
                 .orElseThrow(() -> new ResourceNotFoundException("User not found"));
@@ -43,7 +43,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public ResponseUserDTO getByEmail(String email) {
+    public UserResponseDTO getByEmail(String email) {
 
         User user = userRepository.findByEmail(email)
                 .orElseThrow(() -> new ResourceNotFoundException("Email not found"));
@@ -51,7 +51,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public ResponseUserDTO getByRole(UserRole role) {
+    public UserResponseDTO getByRole(UserRole role) {
 
         User user = userRepository.findByRole(role)
                 .orElseThrow(() -> new ResourceNotFoundException("Role not found"));
@@ -60,7 +60,7 @@ public class UserServiceImpl implements UserService {
 
 
     @Override
-    public ResponseUserDTO updateEmail(String currentEmail, UpdateEmailDTO dto) {
+    public UserResponseDTO updateEmail(String currentEmail, UpdateEmailDTO dto) {
 
         User user = userRepository.findByEmail(currentEmail)
                 .orElseThrow(() -> new ResourceNotFoundException("Email not found!"));
@@ -84,7 +84,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public ResponseUserDTO updatePassword(UpdatePasswordDTO dto) {
+    public UserResponseDTO updatePassword(UpdatePasswordDTO dto) {
 
         String email = SecurityContextHolder.getContext().getAuthentication().getName();
 
@@ -112,7 +112,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public ResponseUserDTO updateRole(UpdateRoleDTO dto) {
+    public UserResponseDTO updateRole(UpdateRoleDTO dto) {
 
         String loggedUsername = SecurityContextHolder.getContext().getAuthentication().getName();
 

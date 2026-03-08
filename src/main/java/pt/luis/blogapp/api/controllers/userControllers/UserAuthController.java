@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import pt.luis.blogapp.api.dto.userDTO.AuthResponseDTO;
 import pt.luis.blogapp.api.dto.userDTO.CreateUserDTO;
 import pt.luis.blogapp.api.dto.userDTO.LoginRequestDTO;
-import pt.luis.blogapp.api.dto.userDTO.ResponseUserDTO;
+import pt.luis.blogapp.api.dto.userDTO.UserResponseDTO;
 import pt.luis.blogapp.api.dto.userDTO.ResetPasswordConfirmDTO;
 import pt.luis.blogapp.api.dto.userDTO.ResetPasswordRequestDTO;
 import pt.luis.blogapp.api.services.userServices.UserAuthService;
@@ -26,9 +26,9 @@ public class UserAuthController {
 
 
     @PostMapping("/register")
-    public ResponseEntity<ResponseUserDTO> created(@Valid @RequestBody CreateUserDTO dto) {
+    public ResponseEntity<UserResponseDTO> created(@Valid @RequestBody CreateUserDTO dto) {
 
-        ResponseUserDTO created = authService.created(dto);
+        UserResponseDTO created = authService.created(dto);
         return ResponseEntity.status(HttpStatus.CREATED).body(created);
     }
 

@@ -1,6 +1,6 @@
 package pt.luis.blogapp.api.services.userServices;
 
-import pt.luis.blogapp.api.dto.userDTO.ResponseUserDTO;
+import pt.luis.blogapp.api.dto.userDTO.UserResponseDTO;
 import pt.luis.blogapp.api.dto.userDTO.UpdateEmailDTO;
 import pt.luis.blogapp.api.dto.userDTO.UpdatePasswordDTO;
 import pt.luis.blogapp.api.dto.userDTO.UpdateRoleDTO;
@@ -8,12 +8,12 @@ import pt.luis.blogapp.api.models.role.UserRole;
 
 public interface UserService {
 
-    ResponseUserDTO getByUsername(String username);
-    ResponseUserDTO getByEmail(String email);
-    ResponseUserDTO getByRole(UserRole role);
+    UserResponseDTO getByUsername(String username);
+    UserResponseDTO getByEmail(String email);
+    UserResponseDTO getByRole(UserRole role);
 
-    ResponseUserDTO updateEmail(String currentEmail, UpdateEmailDTO dto);
-    ResponseUserDTO updatePassword(UpdatePasswordDTO dto);
+    UserResponseDTO updateEmail(String currentEmail, UpdateEmailDTO dto);
+    UserResponseDTO updatePassword(UpdatePasswordDTO dto);
 
-    ResponseUserDTO updateRole(UpdateRoleDTO dto);
+    UserResponseDTO updateRole(UpdateRoleDTO dto);
 }

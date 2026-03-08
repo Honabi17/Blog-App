@@ -2,7 +2,7 @@ package pt.luis.blogapp.api.mappers;
 
 
 import pt.luis.blogapp.api.dto.userDTO.CreateUserDTO;
-import pt.luis.blogapp.api.dto.userDTO.ResponseUserDTO;
+import pt.luis.blogapp.api.dto.userDTO.UserResponseDTO;
 import pt.luis.blogapp.api.models.entities.User;
 import pt.luis.blogapp.api.infrastructure.securities.password.Password;
 
@@ -23,13 +23,13 @@ public class UserMapper {
 
 
 
-    public static ResponseUserDTO toResponse(User user){
+    public static UserResponseDTO toResponse(User user){
 
         if (user == null) {
             return null;
         }
 
-        return new ResponseUserDTO(
+        return new UserResponseDTO(
                 user.getId(),
                 user.getUsername(),
                 user.getEmail(),

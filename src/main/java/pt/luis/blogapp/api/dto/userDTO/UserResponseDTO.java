@@ -4,7 +4,7 @@ import pt.luis.blogapp.api.models.role.UserRole;
 
 import java.time.LocalDateTime;
 
-public record ResponseUserDTO(
+public record UserResponseDTO(
         Long id,
         String username,
         String email,
