@@ -1,9 +1,9 @@
 package pt.luis.blogapp.api.mappers;
 
-import pt.luis.blogapp.api.dto.postDTO.CategorySummaryDTO;
-import pt.luis.blogapp.api.dto.postDTO.PostResponseDTO;
-import pt.luis.blogapp.api.dto.postDTO.UserSummaryDTO;
+import pt.luis.blogapp.api.dto.postDTO.*;
+import pt.luis.blogapp.api.models.entities.Category;
 import pt.luis.blogapp.api.models.entities.Post;
+import pt.luis.blogapp.api.models.entities.User;
 
 public class PostMapper {
 
@@ -25,5 +25,26 @@ public class PostMapper {
                 post.getCreatedAt(),
                 post.getUpdatedAt()
         );
+    }
+
+    public static Post toEntity(CreatePostDTO dto, User author){
+
+        Post post = new Post();
+        post.setTitle(dto.title());
+        post.setContent(dto.content());
+        post.setAuthor(author);
+
+        return post;
+    }
+
+    public static void updatePostEntity(UpdatePostDTO dto, Post post){
+
+        if(dto.title() != null && !dto.title().isBlank()){
+            post.setTitle(dto.title());
+        }
+
+        if (dto.content() != null && !dto.content().isBlank()){
+            post.setContent(dto.content());
+        }
     }
 }
