@@ -1,4 +1,4 @@
-package pt.luis.blogapp.api.controllers.categoriesController;
+package pt.luis.blogapp.api.controllers;
 
 
 import jakarta.validation.Valid;
@@ -23,7 +23,7 @@ public class CategoryController {
     }
 
 
-    @PostMapping("/")
+    @PostMapping
     public ResponseEntity<CategoryResponseDTO> created(@Valid @RequestBody CreateCategoryDTO dto){
 
         CategoryResponseDTO create = categoryService.created(dto);

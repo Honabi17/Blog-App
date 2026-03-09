@@ -1,4 +1,4 @@
-package pt.luis.blogapp.api.controllers.personControllers;
+package pt.luis.blogapp.api.controllers;
 
 
 import jakarta.validation.Valid;

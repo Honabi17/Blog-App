@@ -1,4 +1,4 @@
-package pt.luis.blogapp.api.controllers.postController;
+package pt.luis.blogapp.api.controllers;
 
 
 import jakarta.validation.Valid;
@@ -27,7 +27,7 @@ public class PostController {
     }
 
 
-    @PostMapping("/")
+    @PostMapping
     public ResponseEntity<PostResponseDTO> create(@Valid @RequestBody CreatePostDTO dto){
 
         PostResponseDTO create = postService.create(dto);
@@ -35,10 +35,10 @@ public class PostController {
     }
 
     @GetMapping("/title/{title}")
-    public ResponseEntity<PostResponseDTO> getByTitle(
+    public ResponseEntity<List<PostResponseDTO>> getByTitle(
             @PathVariable String title){
 
-        PostResponseDTO result = postService.getByTitle(title);
+        List<PostResponseDTO> result = postService.getByTitle(title);
         return ResponseEntity.ok(result);
     }
 
@@ -57,7 +57,10 @@ public class PostController {
             @RequestParam(defaultValue = "desc") String direction
     ){
         Page<PostResponseDTO> result = postService.getAllPaged(
-                page, size, sortBy, direction
+                page,
+                size,
+                sortBy,
+                direction
         );
         return ResponseEntity.ok(result);
     }
