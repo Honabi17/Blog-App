@@ -88,12 +88,17 @@ public class PostServiceImpl implements PostService{
     }
 
     @Override
-    public PostResponseDTO getByTitle(String title) {
+    public List<PostResponseDTO> getByTitle(String title) {
 
-        Post find = postRepository.findByTitle(title)
-                .orElseThrow(() -> new ResourceNotFoundException("Post not found with title: " + title));
+        List<Post> list = postRepository.findAllByTitleContainingIgnoreCase(title);
 
-        return PostMapper.toDTO(find);
+        if(list.isEmpty()){
+            throw new ResourceNotFoundException("Post not found with title: " + title);
+        }
+
+        return list.stream()
+                .map(PostMapper::toDTO)
+                .toList();
     }
 
     @Override

@@ -143,6 +143,7 @@ public class CategoryServiceImpl implements CategoryService {
         ensureUserCanModifyCategory(user, deleteCategory);
 
         categoryRepository.delete(deleteCategory);
+
     }
 
     @Override
