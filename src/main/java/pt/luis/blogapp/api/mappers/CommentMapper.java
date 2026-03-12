@@ -23,7 +23,7 @@ public class CommentMapper {
 
     public static void updateEntity(UpdateCommentDTO dto, Comment comment){
 
-        if(dto.content() != null && dto.content().isBlank()){
+        if(dto.content() != null && !dto.content().isBlank()){
             comment.setContent(dto.content());
         }
         comment.setUpdatedAt(LocalDateTime.now());
