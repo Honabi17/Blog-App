@@ -16,8 +16,6 @@ public class CommentMapper {
         comment.setContent(dto.content());
         comment.setAuthor(author);
         comment.setPost(post);
-        comment.setCreatedAt(LocalDateTime.now());
-        comment.setUpdatedAt(LocalDateTime.now());
         return comment;
     }
 
@@ -33,9 +31,9 @@ public class CommentMapper {
         return new ResponseCommentDTO(
                 comment.getId(),
                 comment.getContent(),
-                comment.getAuthor().getId(),
-                comment.getAuthor().getUsername(),
-                comment.getPost().getId(),
+                comment.getAuthor() != null ? comment.getAuthor().getId() : null,
+                comment.getAuthor() != null ? comment.getAuthor().getUsername() : null,
+                comment.getPost() != null ? comment.getPost().getId() : null,
                 comment.getCreatedAt(),
                 comment.getUpdatedAt()
         );

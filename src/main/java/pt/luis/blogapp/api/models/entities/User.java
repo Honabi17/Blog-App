@@ -59,6 +59,10 @@ public class User extends BaseEntity {
     private List<Comment> comments = new ArrayList<>();
 
 
-    @OneToOne(mappedBy = "user", cascade = CascadeType.REMOVE, orphanRemoval = true)
+    @OneToOne(mappedBy = "user",
+            cascade = CascadeType.REMOVE,
+            orphanRemoval = true,
+            fetch = FetchType.EAGER
+    )
     private Person person;
 }

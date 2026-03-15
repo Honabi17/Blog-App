@@ -160,8 +160,16 @@ public class UserAuthServiceImpl implements UserAuthService {
     @Override
     public User getAuthenticatedUser() {
 
-        String username = SecurityContextHolder.getContext().getAuthentication().getName();
+        var auth = SecurityContextHolder.getContext().getAuthentication();
 
-        return findByUsernameOrThrow(username);
+        if(auth == null || !auth.isAuthenticated() || auth.getPrincipal() == null){
+            throw  new RuntimeException("No authenticated user found");
+        }
+
+        if(auth.getPrincipal() instanceof CustomUserDetails userDetails){
+            return userDetails.getUser();
+        }
+
+        return findByUsernameOrThrow(auth.getName());
     }
 }

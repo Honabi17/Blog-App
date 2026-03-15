@@ -41,12 +41,14 @@ public class CommentController {
 
     @GetMapping
     public ResponseEntity<Page<ResponseCommentDTO>> getAllPaged(
+            @RequestParam Long postId,
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "5") int size,
             @RequestParam(defaultValue = "createdAt") String sortBy,
             @RequestParam(defaultValue = "desc") String direction
     ){
         Page<ResponseCommentDTO> result = commentService.getAllPaged(
+                postId,
                 page,
                 size,
                 sortBy,

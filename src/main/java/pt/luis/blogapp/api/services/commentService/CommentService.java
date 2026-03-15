@@ -14,6 +14,7 @@ public interface CommentService {
 
     List<ResponseCommentDTO> getByAuthor(String author);
     Page<ResponseCommentDTO> getAllPaged(
+            Long postId,
             int page,
             int size,
             String sortBy,

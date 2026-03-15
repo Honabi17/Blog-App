@@ -18,14 +18,13 @@ import pt.luis.blogapp.api.models.entities.entity.BaseEntity;
 public class Comment extends BaseEntity {
 
     @Column(nullable = false)
-    @Size(min = 4 , max = 500)
     private String content;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "author_id", nullable = false)
     private User author;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "post_id", nullable = false)
     private Post post;
 }
