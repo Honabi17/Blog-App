@@ -5,89 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="60f3e09f-08d2-4823-b096-ac260490a7ba" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pt/luis/blogapp/api/BlogappApplication.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pt/luis/blogapp/api/controllers/CategoryController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pt/luis/blogapp/api/controllers/CommentController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pt/luis/blogapp/api/controllers/PersonController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pt/luis/blogapp/api/controllers/PostController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pt/luis/blogapp/api/controllers/userControllers/AdminController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pt/luis/blogapp/api/controllers/userControllers/UserAuthController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pt/luis/blogapp/api/controllers/userControllers/UserController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pt/luis/blogapp/api/dto/categoryDTO/CategoryResponseDTO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pt/luis/blogapp/api/dto/categoryDTO/CreateCategoryDTO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pt/luis/blogapp/api/dto/categoryDTO/UpdateCategoryDTO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pt/luis/blogapp/api/dto/commentDTO/CreateCommentDTO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pt/luis/blogapp/api/dto/commentDTO/ResponseCommentDTO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pt/luis/blogapp/api/dto/commentDTO/UpdateCommentDTO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pt/luis/blogapp/api/dto/personDTO/CreatePersonDTO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pt/luis/blogapp/api/dto/personDTO/PersonStatsDTO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pt/luis/blogapp/api/dto/personDTO/ProfileDTO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pt/luis/blogapp/api/dto/personDTO/UpdatePersonDTO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pt/luis/blogapp/api/dto/postDTO/CategorySummaryDTO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pt/luis/blogapp/api/dto/postDTO/CreatePostDTO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pt/luis/blogapp/api/dto/postDTO/PostResponseDTO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pt/luis/blogapp/api/dto/postDTO/UpdatePostDTO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pt/luis/blogapp/api/dto/postDTO/UserSummaryDTO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pt/luis/blogapp/api/dto/userDTO/AuthResponseDTO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pt/luis/blogapp/api/dto/userDTO/CreateUserDTO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pt/luis/blogapp/api/dto/userDTO/LoginRequestDTO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pt/luis/blogapp/api/dto/userDTO/ResetPasswordConfirmDTO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pt/luis/blogapp/api/dto/userDTO/ResetPasswordRequestDTO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pt/luis/blogapp/api/dto/userDTO/UpdateEmailDTO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pt/luis/blogapp/api/dto/userDTO/UpdatePasswordDTO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pt/luis/blogapp/api/dto/userDTO/UpdateRoleDTO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pt/luis/blogapp/api/dto/userDTO/UserResponseDTO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pt/luis/blogapp/api/exceptions/ApiErrorResponse.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pt/luis/blogapp/api/exceptions/Exceptions/AccessDeniedException.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pt/luis/blogapp/api/exceptions/Exceptions/BadRequestException.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pt/luis/blogapp/api/exceptions/Exceptions/ResourceAlreadyExistsException.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pt/luis/blogapp/api/exceptions/Exceptions/ResourceNotFoundException.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pt/luis/blogapp/api/exceptions/Exceptions/UserValidationException.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pt/luis/blogapp/api/exceptions/GlobalExceptionHandler.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pt/luis/blogapp/api/infrastructure/securities/password/Password.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pt/luis/blogapp/api/infrastructure/securities/password/PasswordHasher.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pt/luis/blogapp/api/infrastructure/securities/security/CustomUserDetails.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pt/luis/blogapp/api/infrastructure/securities/security/CustomUserDetailsService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pt/luis/blogapp/api/infrastructure/securities/security/JwtAuthFilter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pt/luis/blogapp/api/infrastructure/securities/security/JwtService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pt/luis/blogapp/api/infrastructure/securities/security/SecurityConfig.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pt/luis/blogapp/api/mappers/CategoryMapper.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pt/luis/blogapp/api/mappers/CommentMapper.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pt/luis/blogapp/api/mappers/PersonMapper.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pt/luis/blogapp/api/mappers/PostMapper.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pt/luis/blogapp/api/mappers/UserMapper.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pt/luis/blogapp/api/models/entities/Category.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pt/luis/blogapp/api/models/entities/Comment.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pt/luis/blogapp/api/models/entities/PasswordResetToken.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pt/luis/blogapp/api/models/entities/Person.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pt/luis/blogapp/api/models/entities/PersonStats.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pt/luis/blogapp/api/models/entities/Post.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pt/luis/blogapp/api/models/entities/User.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pt/luis/blogapp/api/models/entities/entity/BaseEntity.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pt/luis/blogapp/api/models/role/UserRole.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pt/luis/blogapp/api/repositories/CategoryRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pt/luis/blogapp/api/repositories/CommentRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pt/luis/blogapp/api/repositories/PersonRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pt/luis/blogapp/api/repositories/PostRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pt/luis/blogapp/api/repositories/userRepositories/TokenRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pt/luis/blogapp/api/repositories/userRepositories/UserRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pt/luis/blogapp/api/services/categoryService/CategoryService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pt/luis/blogapp/api/services/categoryService/CategoryServiceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pt/luis/blogapp/api/services/commentService/CommentService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pt/luis/blogapp/api/services/commentService/CommentServiceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pt/luis/blogapp/api/services/personService/PersonService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pt/luis/blogapp/api/services/personService/PersonServiceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pt/luis/blogapp/api/services/postService/PostService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pt/luis/blogapp/api/services/postService/PostServiceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pt/luis/blogapp/api/services/userServices/EmailService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pt/luis/blogapp/api/services/userServices/UserAuthService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pt/luis/blogapp/api/services/userServices/UserService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pt/luis/blogapp/api/services/userServices/serviceImpl/EmailServiceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pt/luis/blogapp/api/services/userServices/serviceImpl/UserAuthServiceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pt/luis/blogapp/api/services/userServices/serviceImpl/UserServiceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/pt/luis/blogapp/api/BlogappApplicationTests.java" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/Front-End/my-react-app/src/components/RegisterForm.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Front-End/my-react-app/src/components/RegisterForm.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Front-End/my-react-app/src/pages/Auth.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Front-End/my-react-app/src/pages/Auth.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Front-End/my-react-app/src/pages/Login.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/material_theme_project_new.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/material_theme_project_new.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Front-End/my-react-app/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Front-End/my-react-app/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Front-End/my-react-app/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/Front-End/my-react-app/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Front-End/my-react-app/src/App.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Front-End/my-react-app/src/pages/Login.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/Front-End/my-react-app/src/pages/Login.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Front-End/my-react-app/src/services/api.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Front-End/my-react-app/src/services/api.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Front-End/my-react-app/src/services/authServices" beforeDir="false" afterPath="$PROJECT_DIR$/Front-End/my-react-app/src/services/authService.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -97,18 +27,18 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "Honabi17"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;Honabi17&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/Honabi17/Blog-App.git",
-    "accountId": "b80bd2c2-5716-4f00-9bd8-2b1e94f553ab"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/Honabi17/Blog-App.git&quot;,
+    &quot;accountId&quot;: &quot;36f349df-27de-446b-a40c-25f1f9e9d4fe&quot;
   }
-}]]></component>
+}</component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
       <MavenGeneralSettings>
@@ -116,35 +46,30 @@
       </MavenGeneralSettings>
     </option>
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "customColor": "",
-  "associatedIndex": 0
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 0
+}</component>
   <component name="ProjectId" id="3BEKIgxlkGHoNggc6ELcCrxj4KB" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "main"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;
   }
-}]]></component>
-  <component name="RunManager">
-    <configuration default="true" type="JetRunConfigurationType">
-      <module name="Blog-App" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
-      <module name="Blog-App" />
-      <option name="filePath" />
-      <method v="2" />
-    </configuration>
+}</component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-30f59d01ecdd-2fc7cc6b9a17-intellij.indexing.shared.core-IU-253.30387.90" />
+      </set>
+    </attachedChunks>
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">

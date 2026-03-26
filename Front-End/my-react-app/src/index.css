@@ -1,0 +1,18 @@
+:root {
+  --light-beige: #f7f3ef;
+  --sand: #e8d8c3;
+  --coffee: #a67c52;
+  --dark-brown: #4b2e1f;
+
+  --glass-bg: rgba(255, 255, 255, 0.25);
+  --glass-border: rgba(255, 255, 255, 0.4);
+  --glass-input: rgba(255, 255, 255, 0.35);
+
+  --glow: rgba(255, 200, 150, 0.6);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}

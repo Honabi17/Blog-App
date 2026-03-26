@@ -1,0 +1,143 @@
+
+.auth-page{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: radial-gradient(circle at center,
+        var(--light-beige),
+        var(--sand),
+        var(--coffee),
+        var(--dark-brown)
+    );
+
+    position: relative;
+    overflow: hidden;
+    font-family: "Poppins", sans-serif;
+}
+
+.auth-page::before{
+    content: "";
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    background: var(--glow);
+    filter: blur(180px);
+    border-radius: 50%;
+    top:-150px;
+    left: -150px;
+    z-index: 0;
+}
+
+.auth-container{
+    display: flex;
+    gap: 40px;
+    z-index: 1;
+}
+
+.auth-card{
+    width: 380px;
+    padding: 40px;
+
+    background: var(--glass-bg);
+    border-radius: 20px;
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+
+    display: flex;
+    flex-direction: column;
+}
+
+.auth-title{
+    font-size: 30px;
+    color: var(--dark-brown);
+    margin-bottom: 10px;
+}
+
+.auth-subtitle{
+    color: var(--coffee);
+    margin-bottom: 25px;
+}
+
+.btn-google{
+    margin-top: 20px;
+    padding: 12px;
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+
+    background: white;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+
+    font-weight: bold;
+    color: var(--dark-brown);
+    transition: 0.2s;
+}
+
+.btn-google:hover{
+    background: #f0e8e2;
+}
+
+.input-group{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+.input{
+    width: 100%;
+    padding: 12px;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+
+    background: var(--glass-input);
+    color: var(--dark-brown);
+    font-size: 14px;
+}
+
+.btn-create{
+    width: 100%;
+    padding: 12px;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+
+    background: var(--glass-input);
+    color: var(--dark-brown);
+    font-size: 14px;
+}
+
+.btn.create{
+    width: 100%;
+    padding: 12px;
+
+    background: var(--coffee);
+    border: none;
+    border-radius: 10px;
+
+    color:White;
+    font-weight: bold;
+    cursor: pointer
+
+    margin-top: 10px;
+    transition: 0.2s;
+}
+
+.btn-create:hover{
+    background: var(--dark-brown);
+}
+
+.error {
+  margin-top: 5px;
+  color: #b30000;
+  font-size: 14px;
+  font-weight: bold;
+}
