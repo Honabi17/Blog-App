@@ -1,18 +1,34 @@
-:root {
-  --light-beige: #f7f3ef;
-  --sand: #e8d8c3;
-  --coffee: #a67c52;
-  --dark-brown: #4b2e1f;
-
-  --glass-bg: rgba(255, 255, 255, 0.25);
-  --glass-border: rgba(255, 255, 255, 0.4);
-  --glass-input: rgba(255, 255, 255, 0.35);
-
-  --glow: rgba(255, 200, 150, 0.6);
-}
 
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
+
+:root {
+  --light-beige: #f7f3ef;
+  --sand: #e8d8c3;
+  --coffee: #a67c52;
+  --dark-brown: #4b2e1f;
+
+  --coffee-light: #c89f72;
+  --coffee-dark: #6b4a2e;
+
+  --glass-bg: rgba(255, 255, 255, 0.22);
+  --glass-bg-strong: rgba(255, 255, 255, 0.28);
+  --glass-input: rgba(255, 255, 255, 0.35);
+
+  --glass-border: rgba(255, 255, 255, 0.4);
+  --glass-border-strong: rgba(255, 255, 255, 0.45);
+
+  --shadow-soft: 0 8px 24px rgba(0, 0, 0, 0.22);
+  --shadow-strong: 0 16px 48px rgba(0, 0, 0, 0.35);
+
+  --glow: rgba(255, 200, 150, 0.6);
+
+  --btn-gradient: linear-gradient(135deg, var(--coffee), var(--coffee-light));
+  --btn-gradient-hover: linear-gradient(135deg, var(--coffee-dark), var(--dark-brown));
+}
+
+
+
