@@ -1,7 +1,11 @@
 import { useForm } from "react-hook-form";
-import { checkUsername } from "../services/userService";
+import { checkUsername } from "../../services/userService";
+import { useState } from "react";
+import { registerUser } from "../../services/registerUser";
 
 export function RegisterForm() {
+  const [loading, setLoading] = useState(false);
+  const [success, setSuccess] = useState("");
   const {
     register,
     handleSubmit,
@@ -32,6 +36,9 @@ export function RegisterForm() {
   };
 
   const onSubmit = async (data: any) => {
+    setLoading(true);
+    setSuccess("");
+
     const exists = await checkUsername(data.username);
 
     if (exists) {
@@ -39,14 +46,22 @@ export function RegisterForm() {
         type: "manual",
         message: "This username already exists.",
       });
+      setLoading(false);
       return;
     }
-  };
 
-  const usernameError =
-    errors.username?.message && typeof errors.username.message === "string"
-      ? errors.username.message
-      : null;
+    try {
+      await registerUser(data);
+      setSuccess("Account created successfully!");
+    } catch (error) {
+      setError("email", {
+        type: "manual",
+        message: "Someting went wrong. Try again.",
+      });
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <>

@@ -5,19 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="60f3e09f-08d2-4823-b096-ac260490a7ba" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Front-End/my-react-app/src/components/RegisterForm.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Front-End/my-react-app/src/components/RegisterForm.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Front-End/my-react-app/src/pages/Auth.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Front-End/my-react-app/src/pages/Auth.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Front-End/my-react-app/src/pages/Login.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/material_theme_project_new.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/material_theme_project_new.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Front-End/my-react-app/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Front-End/my-react-app/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Front-End/my-react-app/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/Front-End/my-react-app/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Front-End/my-react-app/src/App.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Front-End/my-react-app/src/components/RegisterForm.tsx" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Front-End/my-react-app/src/pages/Login.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/Front-End/my-react-app/src/pages/Login.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Front-End/my-react-app/src/services/api.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Front-End/my-react-app/src/services/api.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Front-End/my-react-app/src/services/authServices" beforeDir="false" afterPath="$PROJECT_DIR$/Front-End/my-react-app/src/services/authService.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
