@@ -1,9 +1,14 @@
+import { useNavigate } from "react-router-dom";
+
 type Props = {
     open: boolean,
     menuRef: React.RefObject<HTMLDivElement>
 }
 
 export default function MobileMenu({open, menuRef}: Props){
+
+    const navigate = useNavigate();
+    
     return(
         <div 
             ref={menuRef} 
@@ -12,8 +17,19 @@ export default function MobileMenu({open, menuRef}: Props){
             
 
             <div className="mobile-actions">
-                <button className="btn-outline">Login</button>
-                <button className="btn-primary">Create Account</button>
+                <button 
+                    className="btn-outline"
+                    onClick={() => navigate ("/login")}
+                    >
+                        Login
+                    </button>
+
+                <button 
+                    className="btn-primary"
+                    onClick={() => navigate ("/register")}
+                >
+                    Create Account
+                </button>
             </div>
         </div>
     );

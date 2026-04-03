@@ -53,12 +53,11 @@ export function RegisterForm() {
     try {
       await registerUser(data);
       setSuccess("Account created successfully!");
-    } catch (error) {
-      setError("email", {
-        type: "manual",
-        message: "Someting went wrong. Try again.",
-      });
-    } finally {
+    } catch (error : any) {
+        const message = error?.message || "Someting went wrong. Try again.";
+        setError("email", {type: "manual", message});
+      }
+      finally {
       setLoading(false);
     }
   };
@@ -96,11 +95,20 @@ export function RegisterForm() {
             placeholder="Password..."
             {...register("password", registerValidation.password)}
           />
+          {errors.password && (
+            <p className="error">{errors.password.message as string}</p>
+          )}
         </div>
 
-        <button className="btn-create" type="submit">
-          Create Account
+        <button 
+          className="btn-create" 
+          type="submit"
+          disabled={loading}
+        >
+          {loading ? "Creating..." : "Create Account"}
         </button>
+
+        {success && <p className="success">{success}</p>}
       </form>
     </>
   );

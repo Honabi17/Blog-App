@@ -1,9 +1,11 @@
 import { useEffect, useRef, useState } from "react";
 import MobileMenu from "./MobileMenu";
+import { useNavigate } from "react-router-dom";
 
 
 export default function Navbar(){
 
+    const navigate = useNavigate();
     const [open, setOpen] = useState(false);
 
     const menuRef = useRef<HTMLDivElement>(null);
@@ -53,9 +55,21 @@ export default function Navbar(){
             </div>
            
             <MobileMenu open={open} menuRef={menuRef} />
+            
             <div className="nav-actions">
-                <button className="btn-outline">Login</button>
-                <button className="btn-primary">Create Account</button>
+                <button 
+                    className="btn-outline"
+                    onClick={() => navigate("/login")}
+                >
+                    Login
+                </button>
+    
+                <button 
+                    className="btn-primary"
+                    onClick={()=> navigate("/register")}
+                >
+                    Create Account
+                </button>
             </div>
         </nav>
     );

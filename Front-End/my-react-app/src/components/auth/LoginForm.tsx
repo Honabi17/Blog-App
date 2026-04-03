@@ -37,7 +37,7 @@ export default function LoginForm() {
   return (
     <form onSubmit={handleSubmit}>
       <div className="input-group">
-        <p>Username</p>
+        
         <input
           className="input"
           type="text"
@@ -49,7 +49,7 @@ export default function LoginForm() {
       </div>
 
       <div className="input-group">
-        <p>Password</p>
+        
         <input
           className="input"
           type="password"
@@ -65,6 +65,13 @@ export default function LoginForm() {
       </button>
 
       {errors && <p className="error">{errors}</p>}
+
+      <div 
+          className="forgot-password"
+          onClick={() => navigate("/forgot-password")}
+        >
+          Forgot your password
+        </div>
     </form>
   );
 }

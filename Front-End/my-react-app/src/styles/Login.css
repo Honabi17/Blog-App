@@ -1,0 +1,13 @@
+.forgot-password {
+  margin-top: 10px;
+  text-align: right;
+  font-size: 14px;
+  color: var(--coffee-light);
+  cursor: pointer;
+  transition: 0.25s ease;
+}
+
+.forgot-password:hover {
+  color: var(--coffee);
+  text-shadow: 0 0 6px rgba(200, 159, 114, 0.4);
+}

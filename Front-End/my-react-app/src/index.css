@@ -11,6 +11,7 @@
   --coffee: #a67c52;
   --dark-brown: #4b2e1f;
 
+
   --coffee-light: #c89f72;
   --coffee-dark: #6b4a2e;
 
@@ -26,8 +27,47 @@
 
   --glow: rgba(255, 200, 150, 0.6);
 
+  --background: rgba(255, 255, 255, 0.12);
+  --background-black: rgba(0, 0, 0, 0.25);
+
   --btn-gradient: linear-gradient(135deg, var(--coffee), var(--coffee-light));
   --btn-gradient-hover: linear-gradient(135deg, var(--coffee-dark), var(--dark-brown));
+}
+
+body{
+  min-height: 100vh;
+  background: url('/img_fundo.webp') center/cover no-repeat fixed;
+  font-family: 'Inter', sans-serif;
+  color: white;
+  position: relative;
+  overflow-x: hidden;
+}
+
+body::before{
+  content: "";
+  position: fixed;
+  inset: 0;
+
+  background: rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(6px);
+  z-index: -1;
+}
+
+html{
+  scroll-behavior: smooth;
+}
+
+.fade-in{
+  animation: fadeIn 0.6s ease forwards;
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+@keyframes fadeIn{
+  to{
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 
