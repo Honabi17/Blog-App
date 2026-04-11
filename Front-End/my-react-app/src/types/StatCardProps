@@ -1,0 +1,6 @@
+
+interface StatCardProps{
+    title: string,
+    value: string | number,
+    subtitle?: string
+}

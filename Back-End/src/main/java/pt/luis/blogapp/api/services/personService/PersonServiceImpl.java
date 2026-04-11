@@ -20,9 +20,9 @@ import pt.luis.blogapp.api.services.userServices.UserAuthService;
 @Service
 public class PersonServiceImpl implements PersonService{
 
-    private PersonRepository personRepository;
-    private UserAuthService authService;
-    private UserRepository userRepository;
+    private final PersonRepository personRepository;
+    private final UserAuthService authService;
+    private final UserRepository userRepository;
 
     public PersonServiceImpl(
             PersonRepository personRepository,

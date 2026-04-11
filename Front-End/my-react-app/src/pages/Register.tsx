@@ -15,7 +15,7 @@ export default function Register() {
 
         <p className="auth-link">
           Already have an account?
-          <span className="auth-link-click" onClick={() => navigate("/login")}>
+          <span className="auth-link-click" onClick={() => navigate("/dashboard")}>
             Login
           </span>
         </p>

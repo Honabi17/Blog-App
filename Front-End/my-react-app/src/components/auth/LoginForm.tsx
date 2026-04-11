@@ -1,12 +1,15 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { login } from "../../services/authService";
+import useAuth from "../../contex/useAuth";
 
 export default function LoginForm() {
   const [form, setForm] = useState({ username: "", password: "" });
   const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState("");
   const navigate = useNavigate();
+
+  const {login:loginContext} = useAuth();
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -26,6 +29,7 @@ export default function LoginForm() {
     try {
       const data = await login(form.username, form.password);
       localStorage.setItem("token", data.token);
+      loginContext(data);
       navigate("/dashboard");
     } catch (err) {
       setErrors("Invalid credentials!");

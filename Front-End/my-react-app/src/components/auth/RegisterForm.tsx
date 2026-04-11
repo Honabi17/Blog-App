@@ -2,6 +2,10 @@ import { useForm } from "react-hook-form";
 import { checkUsername } from "../../services/userService";
 import { useState } from "react";
 import { registerUser } from "../../services/registerUser";
+import { login } from "../../services/authService";
+import Dashboard from "../../pages/Dashboard";
+import useAuth from "../../contex/useAuth";
+import { useNavigate } from "react-router-dom";
 
 export function RegisterForm() {
   const [loading, setLoading] = useState(false);
@@ -12,6 +16,9 @@ export function RegisterForm() {
     setError,
     formState: { errors },
   } = useForm();
+
+  const{login:loginContext} = useAuth();
+  const navigate = useNavigate();
 
   const registerValidation = {
     username: {
@@ -52,7 +59,11 @@ export function RegisterForm() {
 
     try {
       await registerUser(data);
+      const loginData = await login(data.username, data.password);
+      localStorage.setItem("token", loginData.token);
+      loginContext(loginData);
       setSuccess("Account created successfully!");
+      navigate("/");
     } catch (error : any) {
         const message = error?.message || "Someting went wrong. Try again.";
         setError("email", {type: "manual", message});

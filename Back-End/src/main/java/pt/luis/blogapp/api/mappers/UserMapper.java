@@ -2,6 +2,7 @@ package pt.luis.blogapp.api.mappers;
 
 
 import pt.luis.blogapp.api.dto.userDTO.CreateUserDTO;
+import pt.luis.blogapp.api.dto.userDTO.UserMeDTO;
 import pt.luis.blogapp.api.dto.userDTO.UserResponseDTO;
 import pt.luis.blogapp.api.models.entities.User;
 import pt.luis.blogapp.api.infrastructure.securities.password.Password;
@@ -54,5 +55,14 @@ public class UserMapper {
         }
 
         user.setPassword(new Password(hashedPassword));
+    }
+
+    public static UserMeDTO toMeDTO(User user){
+        return new UserMeDTO(
+                user.getId(),
+                user.getUsername(),
+                user.getEmail(),
+                user.getRole().name()
+        );
     }
 }

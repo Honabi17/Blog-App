@@ -172,4 +172,18 @@ public class UserAuthServiceImpl implements UserAuthService {
 
         return findByUsernameOrThrow(auth.getName());
     }
+
+    @Override
+    public UserMeDTO getCurrentUser() {
+
+        String username = SecurityContextHolder
+                .getContext()
+                .getAuthentication()
+                .getName();
+
+        User user = userRepository.findByUsername(username)
+                .orElseThrow(() -> new ResourceNotFoundException("User not found"));
+
+        return UserMapper.toMeDTO(user);
+    }
 }

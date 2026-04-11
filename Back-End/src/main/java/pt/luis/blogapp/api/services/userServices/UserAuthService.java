@@ -1,10 +1,6 @@
 package pt.luis.blogapp.api.services.userServices;
 
-import pt.luis.blogapp.api.dto.userDTO.AuthResponseDTO;
-import pt.luis.blogapp.api.dto.userDTO.CreateUserDTO;
-import pt.luis.blogapp.api.dto.userDTO.LoginRequestDTO;
-import pt.luis.blogapp.api.dto.userDTO.UserResponseDTO;
-import pt.luis.blogapp.api.dto.userDTO.ResetPasswordConfirmDTO;
+import pt.luis.blogapp.api.dto.userDTO.*;
 import pt.luis.blogapp.api.models.entities.User;
 
 public interface UserAuthService {
@@ -16,4 +12,6 @@ public interface UserAuthService {
     String confirmPassword(ResetPasswordConfirmDTO dto);
 
     User getAuthenticatedUser();
+
+    UserMeDTO getCurrentUser();
 }

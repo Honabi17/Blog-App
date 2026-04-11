@@ -1,4 +1,4 @@
-import {api} from './api'
+import {api} from '../api/api'
 
 export async function checkUsername(username: string){
 
@@ -7,6 +7,6 @@ export async function checkUsername(username: string){
         return response.data.exists;
     }
     catch (error){
-        return false;
+        return null;
     }
 }

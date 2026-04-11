@@ -4,6 +4,8 @@ import Auth from "./pages/Auth";
 import Landing from "./pages/Landing";
 import Register from './pages/Register';
 import Login from './pages/Login';
+import ProtectedRoute from './components/ProtectedRoute';
+import Dashboard from './pages/Dashboard';
 
 function App() {
   return (
@@ -13,6 +15,14 @@ function App() {
         <Route path="/auth" element={<Auth />} />
         <Route path="/Login" element={<Login />}/>
         <Route path="/register" element={<Register />} />
+        <Route 
+          path='/dashboard' 
+          element={
+            <ProtectedRoute>
+              <Dashboard />
+            </ProtectedRoute>
+          }
+        />
       </Routes>
     </BrowserRouter>
   );

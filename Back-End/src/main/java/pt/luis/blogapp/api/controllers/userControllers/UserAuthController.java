@@ -3,13 +3,10 @@ package pt.luis.blogapp.api.controllers.userControllers;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
-import pt.luis.blogapp.api.dto.userDTO.AuthResponseDTO;
-import pt.luis.blogapp.api.dto.userDTO.CreateUserDTO;
-import pt.luis.blogapp.api.dto.userDTO.LoginRequestDTO;
-import pt.luis.blogapp.api.dto.userDTO.UserResponseDTO;
-import pt.luis.blogapp.api.dto.userDTO.ResetPasswordConfirmDTO;
-import pt.luis.blogapp.api.dto.userDTO.ResetPasswordRequestDTO;
+import pt.luis.blogapp.api.dto.userDTO.*;
 import pt.luis.blogapp.api.services.userServices.UserAuthService;
 
 
@@ -51,5 +48,10 @@ public class UserAuthController {
 
         authService.confirmPassword(dto);
         return ResponseEntity.ok("Password updated successfully");
+    }
+
+    @GetMapping("/me")
+    public ResponseEntity<UserMeDTO> getCurrentUser(){
+        return ResponseEntity.ok(authService.getCurrentUser());
     }
 }
