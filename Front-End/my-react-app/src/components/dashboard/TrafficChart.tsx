@@ -1,5 +1,14 @@
 import { useEffect, useState } from "react";
 import { getTrafficStats } from "../../services/DashboardService";
+import{
+    LineChart,
+    Line,
+    XAxis,
+    YAxis,
+    Tooltip,
+    ResponsiveContainer,
+    CartesianGrid
+}  from "recharts";
 
 
 export default function TrafficChart(){
