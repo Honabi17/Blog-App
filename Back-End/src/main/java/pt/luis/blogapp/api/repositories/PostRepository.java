@@ -20,4 +20,7 @@ public interface PostRepository extends JpaRepository<Post, Long> {
     List<Post> findAllByAuthor_Username(String username);
 
     Page<Post> findAll(Pageable pageable);
+
+    List<Post> findTop5ByOrderByCreatedAtDesc();
+
 }

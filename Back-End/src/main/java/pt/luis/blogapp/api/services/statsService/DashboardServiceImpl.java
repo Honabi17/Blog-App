@@ -3,7 +3,9 @@ package pt.luis.blogapp.api.services.statsService;
 import org.springframework.stereotype.Service;
 import pt.luis.blogapp.api.dto.statsDTO.DashboardStatsDTO;
 import pt.luis.blogapp.api.dto.statsDTO.EarningStatsDTO;
+import pt.luis.blogapp.api.dto.statsDTO.RecentPostDTO;
 import pt.luis.blogapp.api.dto.statsDTO.TrafficStatsDTO;
+import pt.luis.blogapp.api.models.entities.Post;
 import pt.luis.blogapp.api.repositories.CommentRepository;
 import pt.luis.blogapp.api.repositories.PostRepository;
 import pt.luis.blogapp.api.repositories.userRepositories.UserRepository;
@@ -76,5 +78,19 @@ public class DashboardServiceImpl implements DashboardService{
             ));
         }
         return earningStats;
+    }
+
+    @Override
+    public List<RecentPostDTO> getRecentPosts() {
+
+        List<Post> posts = postRepository.findTop5ByOrderByCreatedAtDesc();
+
+        return posts.stream()
+                .map(p -> new RecentPostDTO(
+                        p.getId(),
+                        p.getTitle(),
+                        p.getCreatedAt()
+                ))
+                .toList();
     }
 }
