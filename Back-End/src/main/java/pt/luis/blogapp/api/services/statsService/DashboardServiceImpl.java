@@ -2,9 +2,16 @@ package pt.luis.blogapp.api.services.statsService;
 
 import org.springframework.stereotype.Service;
 import pt.luis.blogapp.api.dto.statsDTO.DashboardStatsDTO;
+import pt.luis.blogapp.api.dto.statsDTO.TrafficStatsDTO;
 import pt.luis.blogapp.api.repositories.CommentRepository;
 import pt.luis.blogapp.api.repositories.PostRepository;
 import pt.luis.blogapp.api.repositories.userRepositories.UserRepository;
+
+import java.time.YearMonth;
+import java.time.format.TextStyle;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale;
 
 @Service
 public class DashboardServiceImpl implements DashboardService{
@@ -34,5 +41,21 @@ public class DashboardServiceImpl implements DashboardService{
         long visitors = 0;
 
         return new DashboardStatsDTO(pageviews, visitors, posts, comment);
+    }
+
+    @Override
+    public List<TrafficStatsDTO> getTrafficStats() {
+
+        List<TrafficStatsDTO> stats = new ArrayList<>();
+
+        YearMonth current = YearMonth.now();
+
+        for(int i = 11; i >= 0; i--){
+            YearMonth month = current.minusMonths(i);
+            stats.add(new TrafficStatsDTO(
+                    month.getMonth()
+                            .getDisplayName(TextStyle.SHORT, Locale.ENGLISH), 0));
+        }
+        return stats;
     }
 }
