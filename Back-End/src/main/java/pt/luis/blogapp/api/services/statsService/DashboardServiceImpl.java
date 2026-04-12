@@ -2,6 +2,7 @@ package pt.luis.blogapp.api.services.statsService;
 
 import org.springframework.stereotype.Service;
 import pt.luis.blogapp.api.dto.statsDTO.DashboardStatsDTO;
+import pt.luis.blogapp.api.dto.statsDTO.EarningStatsDTO;
 import pt.luis.blogapp.api.dto.statsDTO.TrafficStatsDTO;
 import pt.luis.blogapp.api.repositories.CommentRepository;
 import pt.luis.blogapp.api.repositories.PostRepository;
@@ -57,5 +58,23 @@ public class DashboardServiceImpl implements DashboardService{
                             .getDisplayName(TextStyle.SHORT, Locale.ENGLISH), 0));
         }
         return stats;
+    }
+
+    @Override
+    public List<EarningStatsDTO> getEarningStats() {
+
+        List<EarningStatsDTO> earningStats = new ArrayList<>();
+
+        YearMonth current = YearMonth.now();
+
+        for (int i = 11; i >= 0; i--){
+            YearMonth month = current.minusMonths(i);
+
+            earningStats.add(new EarningStatsDTO(
+                    month.getMonth()
+                            .getDisplayName(TextStyle.SHORT, Locale.ENGLISH), 0.0
+            ));
+        }
+        return earningStats;
     }
 }
