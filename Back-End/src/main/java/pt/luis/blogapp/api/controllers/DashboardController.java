@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import pt.luis.blogapp.api.dto.statsDTO.DashboardStatsDTO;
+import pt.luis.blogapp.api.dto.statsDTO.EarningStatsDTO;
 import pt.luis.blogapp.api.dto.statsDTO.TrafficStatsDTO;
 import pt.luis.blogapp.api.services.statsService.DashboardService;
 
@@ -29,5 +30,10 @@ public class DashboardController {
     @GetMapping("/traffic")
     public List<TrafficStatsDTO> getTrafficStats(){
         return dashboardService.getTrafficStats();
+    }
+
+    @GetMapping("/earnings")
+    public List<EarningStatsDTO> getEarningStats(){
+        return dashboardService.getEarningStats();
     }
 }
