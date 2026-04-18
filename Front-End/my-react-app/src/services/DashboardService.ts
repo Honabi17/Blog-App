@@ -10,3 +10,9 @@ export async function getEarningStats(){
     const response = await api.get("/dashboard/earning");
     return response.data;
 }
+
+export async function getRecentPost() {
+    const response = await api.get("/dashboard/recent-posts");
+    return response.data;
+    
+}
