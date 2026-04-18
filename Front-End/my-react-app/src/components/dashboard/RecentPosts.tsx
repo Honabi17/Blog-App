@@ -22,8 +22,16 @@ export default function RecentPosts(){
 
     return(
         <div className="recent-posts-card">
+
             <h3>Recent Posts</h3>
-            <p>Graphic to be implemented...</p>
+
+            {loading ? ( 
+                <p>Loading...</p>
+            ) : posts.length === 0 ?(
+                <p>No posts found.</p>
+            ) : (
+                
+            )}
         </div>
     );
 }
