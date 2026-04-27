@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { CategoryFormProps } from "../types/CategoryFormProps";
 import { CategoryService } from "../services/CategoryService";
 import { CreateCategoryDTO, UpdatedCategoryDTO } from "../types/Category";
@@ -10,6 +10,16 @@ export default function CategoryForm({
 }: CategoryFormProps) {
   const [name, setName] = useState(editing?.name || "");
   const [description, setDescription] = useState(editing?.description || "");
+
+  useEffect(() => {
+    if (editing) {
+      setName(editing.name);
+      setDescription(editing.description);
+    } else {
+      setName("");
+      setDescription("");
+    }
+  }, [editing]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
