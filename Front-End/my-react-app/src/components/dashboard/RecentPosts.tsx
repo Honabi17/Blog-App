@@ -1,37 +1,43 @@
 import { useEffect, useState } from "react";
 import { getRecentPost } from "../../services/DashboardService";
+import { Post } from "../../types/Post";
 
+export default function RecentPosts() {
+  const [posts, setPosts] = useState<Post[]>([]);
+  const [loading, setLoading] = useState(true);
 
-export default function RecentPosts(){
+  useEffect(() => {
+    async function load() {
+      try {
+        const data = await getRecentPost();
+        setPosts(data);
+      } finally {
+        setLoading(false);
+      }
+    }
+    load();
+  }, []);
 
-    const [posts, setPosts] = useState([]);
-    const [loading, setLoading] = useState(true);
+  return (
+    <div>
+      <h3>Recent Posts</h3>
 
-    useEffect (() =>{
-        async function load(){
-            try{
-                const data = await getRecentPost();
-                setPosts(data);
-            }
-            finally{
-                setLoading(false);
-            }
-        }
-        load();
-    },[]);
-
-    return(
-        <div className="recent-posts-card">
-
-            <h3>Recent Posts</h3>
-
-            {loading ? ( 
-                <p>Loading...</p>
-            ) : posts.length === 0 ?(
-                <p>No posts found.</p>
-            ) : (
-                
-            )}
-        </div>
-    );
+      {loading ? (
+        <p>Loading...</p>
+      ) : posts.length === 0 ? (
+        <p>No posts found.</p>
+      ) : (
+        <ul>
+          <div className="recent-posts-grid">
+            {posts.map((post) => (
+              <li key={post.id} className="recent-post-card">
+                <h4>{post.title}</h4>
+                <p>{post.summary}</p>
+              </li>
+            ))}
+          </div>
+        </ul>
+      )}
+    </div>
+  );
 }

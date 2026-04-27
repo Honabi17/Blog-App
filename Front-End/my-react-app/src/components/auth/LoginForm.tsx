@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { login } from "../../services/authService";
-import useAuth from "../../contex/useAuth";
+import useAuth from "../../context/useAuth";
 
 export default function LoginForm() {
   const [form, setForm] = useState({ username: "", password: "" });
@@ -9,7 +9,7 @@ export default function LoginForm() {
   const [errors, setErrors] = useState("");
   const navigate = useNavigate();
 
-  const {login:loginContext} = useAuth();
+  const { login: loginContext } = useAuth();
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -28,9 +28,14 @@ export default function LoginForm() {
 
     try {
       const data = await login(form.username, form.password);
+
       localStorage.setItem("token", data.token);
+
       loginContext(data);
-      navigate("/dashboard");
+
+      setTimeout(() => {
+        navigate("/dashboard");
+      }, 0);
     } catch (err) {
       setErrors("Invalid credentials!");
     } finally {
@@ -41,7 +46,6 @@ export default function LoginForm() {
   return (
     <form onSubmit={handleSubmit}>
       <div className="input-group">
-        
         <input
           className="input"
           type="text"
@@ -53,7 +57,6 @@ export default function LoginForm() {
       </div>
 
       <div className="input-group">
-        
         <input
           className="input"
           type="password"
@@ -70,12 +73,12 @@ export default function LoginForm() {
 
       {errors && <p className="error">{errors}</p>}
 
-      <div 
-          className="forgot-password"
-          onClick={() => navigate("/forgot-password")}
-        >
-          Forgot your password
-        </div>
+      <div
+        className="forgot-password"
+        onClick={() => navigate("/forgot-password")}
+      >
+        Forgot your password
+      </div>
     </form>
   );
 }

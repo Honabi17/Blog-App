@@ -4,7 +4,7 @@ import { useState } from "react";
 import { registerUser } from "../../services/registerUser";
 import { login } from "../../services/authService";
 import Dashboard from "../../pages/Dashboard";
-import useAuth from "../../contex/useAuth";
+import useAuth from "../../context/useAuth";
 import { useNavigate } from "react-router-dom";
 
 export function RegisterForm() {
@@ -17,7 +17,7 @@ export function RegisterForm() {
     formState: { errors },
   } = useForm();
 
-  const{login:loginContext} = useAuth();
+  const { login: loginContext } = useAuth();
   const navigate = useNavigate();
 
   const registerValidation = {
@@ -64,11 +64,10 @@ export function RegisterForm() {
       loginContext(loginData);
       setSuccess("Account created successfully!");
       navigate("/");
-    } catch (error : any) {
-        const message = error?.message || "Someting went wrong. Try again.";
-        setError("email", {type: "manual", message});
-      }
-      finally {
+    } catch (error: any) {
+      const message = error?.message || "Someting went wrong. Try again.";
+      setError("email", { type: "manual", message });
+    } finally {
       setLoading(false);
     }
   };
@@ -111,11 +110,7 @@ export function RegisterForm() {
           )}
         </div>
 
-        <button 
-          className="btn-create" 
-          type="submit"
-          disabled={loading}
-        >
+        <button className="btn-create" type="submit" disabled={loading}>
           {loading ? "Creating..." : "Create Account"}
         </button>
 
