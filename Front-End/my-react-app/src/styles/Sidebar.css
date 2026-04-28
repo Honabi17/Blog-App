@@ -77,6 +77,29 @@
     display: none;
 }
 
+.btn-logout{
+    margin-top: auto;
+    width: 100%;
+    padding: 0.8rem 1rem;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    color:white;
+
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+
+    transition: 0.2s ease;
+}
+
+.btn.logout:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+
+
+
 @media (min-width: 1024px){
     .sidebar-overlay{
         display: none;
