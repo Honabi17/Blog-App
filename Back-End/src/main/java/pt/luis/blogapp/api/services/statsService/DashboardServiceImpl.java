@@ -6,6 +6,7 @@ import pt.luis.blogapp.api.dto.statsDTO.EarningStatsDTO;
 import pt.luis.blogapp.api.dto.statsDTO.RecentPostDTO;
 import pt.luis.blogapp.api.dto.statsDTO.TrafficStatsDTO;
 import pt.luis.blogapp.api.models.entities.Post;
+import pt.luis.blogapp.api.repositories.CategoryRepository;
 import pt.luis.blogapp.api.repositories.CommentRepository;
 import pt.luis.blogapp.api.repositories.PostRepository;
 import pt.luis.blogapp.api.repositories.userRepositories.UserRepository;
@@ -19,15 +20,18 @@ import java.util.Locale;
 @Service
 public class DashboardServiceImpl implements DashboardService{
 
+    private final CategoryRepository categoryRepository;
     private final PostRepository postRepository;
     private final CommentRepository commentRepository;
     private final UserRepository userRepository;
 
     public DashboardServiceImpl(
+            CategoryRepository categoryRepository,
             PostRepository postRepository,
             CommentRepository commentRepository,
             UserRepository userRepository
     ){
+        this.categoryRepository = categoryRepository;
         this.postRepository = postRepository;
         this.commentRepository = commentRepository;
         this.userRepository = userRepository;
@@ -36,14 +40,21 @@ public class DashboardServiceImpl implements DashboardService{
     @Override
     public DashboardStatsDTO getStats() {
 
+        long categories = categoryRepository.count();
         long posts = postRepository.count();
-        long comment = commentRepository.count();
+        long comments = commentRepository.count();
         long users = userRepository.count();
 
         long pageviews = 0;
         long visitors = 0;
 
-        return new DashboardStatsDTO(pageviews, visitors, posts, comment);
+        return new DashboardStatsDTO(
+                pageviews,
+                visitors,
+                categories,
+                posts,
+                comments
+        );
     }
 
     @Override

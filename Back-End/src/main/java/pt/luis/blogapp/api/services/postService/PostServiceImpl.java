@@ -88,6 +88,14 @@ public class PostServiceImpl implements PostService{
     }
 
     @Override
+    public PostResponseDTO getById(Long id) {
+        Post post = postRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Post not foun with id: " + id));
+
+        return PostMapper.toDTO(post);
+    }
+
+    @Override
     public List<PostResponseDTO> getByTitle(String title) {
 
         List<Post> list = postRepository.findAllByTitleContainingIgnoreCase(title);

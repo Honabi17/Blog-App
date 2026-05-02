@@ -12,6 +12,7 @@ public interface PostService {
 
     PostResponseDTO create(CreatePostDTO dto);
 
+    PostResponseDTO getById(Long id);
     List<PostResponseDTO> getByTitle(String title);
     List<PostResponseDTO> getByAuthor(String author);
     Page<PostResponseDTO> getAllPaged(
