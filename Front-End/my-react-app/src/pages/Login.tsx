@@ -1,12 +1,15 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { login } from "../services/authService.ts";
 import LoginForm from "../components/auth/LoginForm.tsx";
 import { useNavigate } from "react-router-dom";
-import '../styles/Login.css';
+import "../styles/Login.css";
 
 export default function Login() {
-
   const navigate = useNavigate();
+
+  useEffect(() => {
+    localStorage.removeItem("token");
+  }, []);
 
   return (
     <div className="auth-page">
@@ -20,7 +23,7 @@ export default function Login() {
           <span>Don't have an account?</span>
           <span
             className="auth-link-click"
-            onClick={() => navigate ("/register")}
+            onClick={() => navigate("/register")}
           >
             Create one
           </span>

@@ -2,14 +2,15 @@ import { useEffect, useState } from "react";
 import { CategoryFormProps } from "../types/CategoryFormProps";
 import { CategoryService } from "../services/CategoryService";
 import { CreateCategoryDTO, UpdatedCategoryDTO } from "../types/Category";
+import "../styles/categories/CategoryForm.css";
 
 export default function CategoryForm({
+  editing,
   onClose,
   onSaved,
-  editing,
 }: CategoryFormProps) {
-  const [name, setName] = useState(editing?.name || "");
-  const [description, setDescription] = useState(editing?.description || "");
+  const [name, setName] = useState("");
+  const [description, setDescription] = useState("");
 
   useEffect(() => {
     if (editing) {
@@ -36,9 +37,9 @@ export default function CategoryForm({
   };
 
   return (
-    <div className="category-modal-overlay" onClick={onClose}>
-      <div className="category-modal" onClick={(e) => e.stopPropagation()}>
-        <h2>{editing ? "Edit" : "Create"}</h2>
+    <div className="modal-overlay" onClick={onClose}>
+      <div className="modal" onClick={(e) => e.stopPropagation()}>
+        <h2>{editing ? "Edit Category" : "Create Category"}</h2>
 
         <form onSubmit={handleSubmit}>
           <label>Name</label>
@@ -51,18 +52,19 @@ export default function CategoryForm({
 
           <label>Description</label>
           <input
-            maxLength={50}
+            maxLength={60}
             value={description}
             onChange={(e) => setDescription(e.target.value)}
             required
           />
 
-          <button type="submit">{editing ? "Save" : "Create"}</button>
+          <div className="modal-actions">
+            <button type="submit">{editing ? "Save" : "Create"}</button>
+            <button className="close-btn" onClick={onClose}>
+              Close
+            </button>
+          </div>
         </form>
-
-        <button className="close-btn" onClick={onClose}>
-          Close
-        </button>
       </div>
     </div>
   );

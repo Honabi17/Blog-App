@@ -8,6 +8,8 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import Dashboard from "./pages/Dashboard";
 import CategoryPage from "./pages/CategoryPage";
 import DashboardLayout from "./layouts/DashboardLayout";
+import PostPage from "./pages/PostPage";
+import PostDetailsPage from "./pages/PostDetailsPage";
 
 function App() {
   return (
@@ -33,6 +35,26 @@ function App() {
             <ProtectedRoute>
               <DashboardLayout>
                 <CategoryPage />
+              </DashboardLayout>
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/posts/:id"
+          element={
+            <ProtectedRoute>
+              <DashboardLayout>
+                <PostDetailsPage />
+              </DashboardLayout>
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/posts"
+          element={
+            <ProtectedRoute>
+              <DashboardLayout>
+                <PostPage />
               </DashboardLayout>
             </ProtectedRoute>
           }

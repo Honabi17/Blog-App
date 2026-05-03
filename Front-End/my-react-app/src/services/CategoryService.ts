@@ -9,9 +9,9 @@ export const CategoryService = {
         id: c.id,
         name: c.name,
         description: c.description,
-        createdById: c.created_by,
-        createdAt: c.created_at,
-        updatedAt: c.updated_at
+        createdBy: c.createdBy,
+        createdAt: c.createdAt,
+        updatedAt: c.updatedAt
     }));
         
     },

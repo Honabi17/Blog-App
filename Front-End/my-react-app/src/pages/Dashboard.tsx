@@ -5,14 +5,18 @@ import { getDashboardStats } from "../services/DashboardService";
 import DashboardLayout from "../layouts/DashboardLayout";
 import TrafficChart from "../components/dashboard/TrafficChart";
 import EarningsChart from "../components/dashboard/EarningsChart";
-import RecentPosts from "../components/dashboard/RecentPosts";
 import "../styles/Dashboard.css";
+import Section from "../components/Section";
+import CategoriesOverviewCard from "../components/dashboard/CategoriesOverviewCard";
+import CommentsOverviewCard from "../components/dashboard/CommentsOverviewCard";
+import PostOverviewCard from "../components/dashboard/PostOverviewCard";
 
 export default function Dashboard() {
   const { user } = useAuth();
   const [stats, setStats] = useState({
     pageviews: 0,
     visitors: 0,
+    categories: 0,
     posts: 0,
     comments: 0,
   });
@@ -32,27 +36,35 @@ export default function Dashboard() {
 
   return (
     <DashboardLayout>
-      <div className="dashboard-container">
+      <div className="page-container">
         <div className="welcome">
           <h1>Hi {user?.username}, Welcome back!</h1>
           <p>Here's your blog statistic summary.</p>
         </div>
 
-        <div className="stats-grid">
-          <StatCard title="Pageviews" value={stats.pageviews} />
-          <StatCard title="Visitors" value={stats.visitors} />
-          <StatCard title="Posts" value={stats.posts} />
-          <StatCard title="Comments" value={stats.comments} />
-        </div>
+        <Section title="Statistics">
+          <div className="stats-grid">
+            <StatCard title="Pageviews" value={stats.pageviews} />
+            <StatCard title="Visitors" value={stats.visitors} />
+            <StatCard title="Posts" value={stats.posts} />
+            <StatCard title="Comments" value={stats.comments} />
+          </div>
+        </Section>
 
-        <div className="charts-grid">
-          <TrafficChart />
-          <EarningsChart />
-        </div>
+        <Section title="Traffic & Earnings">
+          <div className="charts-grid">
+            <TrafficChart />
+            <EarningsChart />
+          </div>
+        </Section>
 
-        <div className="bottom-grid">
-          <RecentPosts />
-        </div>
+        <Section title="Overview">
+          <div className="card-grid">
+            <CategoriesOverviewCard count={stats.categories} />
+            <PostOverviewCard count={stats.posts} />
+            <CommentsOverviewCard count={stats.comments} />
+          </div>
+        </Section>
       </div>
     </DashboardLayout>
   );

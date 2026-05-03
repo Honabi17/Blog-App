@@ -37,16 +37,16 @@ export default function Sidebar() {
           <NavLink to="/comments" onClick={() => isMobile && setOpen(false)}>
             💬 {open && "Comments"}
           </NavLink>
-          <button
-            className="btn-logout"
-            onClick={() => {
-              localStorage.removeItem("token");
-              window.location.href = "/";
-            }}
-          >
-            ⇦⎗ {open && "Logout"}
-          </button>
         </nav>
+        <button
+          className="btn-logout"
+          onClick={() => {
+            localStorage.removeItem("token");
+            window.location.href = "/";
+          }}
+        >
+          ⇦⎗ {open && "Logout"}
+        </button>
       </aside>
     </>
   );

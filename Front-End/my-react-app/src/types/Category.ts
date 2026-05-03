@@ -3,7 +3,10 @@ export interface Category{
     id:number,
     name:string,
     description:string,
-    createdById:number,
+    createdBy:{
+        id:number,
+        username: string
+    },
     createdAt:string,
     updatedAt:string
 }
