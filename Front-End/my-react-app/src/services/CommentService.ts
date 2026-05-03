@@ -18,6 +18,18 @@ export const CommentService ={
         return response.data.content;
     },
 
+    async getAll(): Promise<Comment[]>{
+        const response = await api.get("/comments/global");
+        return response.data.content;
+    },
+
+    async getAllPaged(page=0, size=10){
+        const response = await api.get("/comments/global", {
+            params: {page, size, sortBy: "createdAt", direction: "desc"}
+        })
+        return response.data
+    },
+
     async create(comment:{content:string, postId:number}){
         const response = await api.post("/comments", comment);
         return response.data;

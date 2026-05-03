@@ -10,6 +10,7 @@ import CategoryPage from "./pages/CategoryPage";
 import DashboardLayout from "./layouts/DashboardLayout";
 import PostPage from "./pages/PostPage";
 import PostDetailsPage from "./pages/PostDetailsPage";
+import CommentPage from "./pages/CommentPage";
 
 function App() {
   return (
@@ -55,6 +56,16 @@ function App() {
             <ProtectedRoute>
               <DashboardLayout>
                 <PostPage />
+              </DashboardLayout>
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/comments"
+          element={
+            <ProtectedRoute>
+              <DashboardLayout>
+                <CommentPage />
               </DashboardLayout>
             </ProtectedRoute>
           }

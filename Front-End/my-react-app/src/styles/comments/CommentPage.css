@@ -1,0 +1,76 @@
+.comments-page-container{
+    padding: 20px;
+}
+
+.comments-page-container h1{
+    color: #fff;
+    margin-bottom: 20px;
+}
+
+.comments-table{
+    margin: 0 auto;
+    text-align: center;
+    width: 100%;
+    border-collapse: collapse;
+    background: rgba(255,255,255,0.12);
+    backdrop-filter: blur(12px);
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.comments-table th,
+.comments-table td{
+    padding: 12px;
+    border-bottom: 1px solid rgba(255,255,255,0.15);
+    color: #fff;
+}
+
+.comments-table th{
+    background: rgba(255,255,255,0.15);
+    text-align: center;
+}
+
+.comments-table th:hover{
+    background: rgba(255,255,255,0.18);
+}
+
+.delete-btn{
+    background: rgba(255,80,80,0.25);
+    border: 1px solid rgba(255,80,80,0.4);
+    padding: 6px 12px;
+    border-radius: 8px;
+    color: #ff6b6b;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.delete-btn:hover{
+    background: rgba(255,80,80,0.4);
+}
+
+.pagination{
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    color: #fff;
+}
+
+.pagination button{
+    padding: 8px 14px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    background: rgba(0,120,255,0.35);
+    color: #fff;
+    transition: 0.2s ease;
+}
+
+.pagination button:disabled{
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+.pagination button:hover:not(:disabled){
+    background: rgba(0,120,255,0.5);
+}
