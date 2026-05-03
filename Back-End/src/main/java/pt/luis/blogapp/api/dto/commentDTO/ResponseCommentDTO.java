@@ -9,6 +9,7 @@ public record ResponseCommentDTO(
         Long authorId,
         String authorUsername,
         Long postId,
+        String postTitle,
         LocalDateTime createdAt,
         LocalDateTime updatedAt
 ){}

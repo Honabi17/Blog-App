@@ -157,6 +157,7 @@ public class UserAuthServiceImpl implements UserAuthService {
         return "Password updated successfully!";
     }
 
+
     @Override
     public User getAuthenticatedUser() {
 
@@ -172,6 +173,7 @@ public class UserAuthServiceImpl implements UserAuthService {
 
         return findByUsernameOrThrow(auth.getName());
     }
+
 
     @Override
     public UserMeDTO getCurrentUser() {

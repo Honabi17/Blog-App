@@ -9,10 +9,9 @@ import pt.luis.blogapp.api.models.role.UserRole;
 public interface UserService {
 
     UserResponseDTO getByUsername(String username);
-    UserResponseDTO getByEmail(String email);
-    UserResponseDTO getByRole(UserRole role);
 
-    UserResponseDTO updateEmail(String currentEmail, UpdateEmailDTO dto);
+    UserResponseDTO updateEmail(UpdateEmailDTO dto);
+
     UserResponseDTO updatePassword(UpdatePasswordDTO dto);
 
     UserResponseDTO updateRole(UpdateRoleDTO dto);

@@ -43,27 +43,12 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public UserResponseDTO getByEmail(String email) {
+    public UserResponseDTO updateEmail(UpdateEmailDTO dto) {
 
-        User user = userRepository.findByEmail(email)
-                .orElseThrow(() -> new ResourceNotFoundException("Email not found"));
-        return UserMapper.toResponse(user);
-    }
-
-    @Override
-    public UserResponseDTO getByRole(UserRole role) {
-
-        User user = userRepository.findByRole(role)
-                .orElseThrow(() -> new ResourceNotFoundException("Role not found"));
-        return UserMapper.toResponse(user);
-    }
-
-
-    @Override
-    public UserResponseDTO updateEmail(String currentEmail, UpdateEmailDTO dto) {
+        String currentEmail = SecurityContextHolder.getContext().getAuthentication().getName();
 
         User user = userRepository.findByEmail(currentEmail)
-                .orElseThrow(() -> new ResourceNotFoundException("Email not found!"));
+                .orElseThrow(() -> new ResourceNotFoundException("User not found!"));
 
         String newEmail = Optional.ofNullable(dto.newEmail())
                 .filter(e -> !e.isBlank())

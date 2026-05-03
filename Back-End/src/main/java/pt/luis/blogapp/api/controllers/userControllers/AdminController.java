@@ -1,6 +1,7 @@
 package pt.luis.blogapp.api.controllers.userControllers;
 
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,8 +22,9 @@ public class AdminController {
     }
 
     @PatchMapping("/promote")
-    public UserResponseDTO promote(@RequestBody UpdateRoleDTO dto){
+    public ResponseEntity<UserResponseDTO> promote(@RequestBody UpdateRoleDTO dto){
 
-        return userService.updateRole(dto);
+        UserResponseDTO updated = userService.updateRole(dto);
+        return ResponseEntity.ok(updated);
     }
 }

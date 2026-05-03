@@ -16,6 +16,7 @@ import java.time.format.TextStyle;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
+import java.util.Random;
 
 @Service
 public class DashboardServiceImpl implements DashboardService{
@@ -40,13 +41,15 @@ public class DashboardServiceImpl implements DashboardService{
     @Override
     public DashboardStatsDTO getStats() {
 
+        Random random = new Random();
+
         long categories = categoryRepository.count();
         long posts = postRepository.count();
         long comments = commentRepository.count();
         long users = userRepository.count();
 
-        long pageviews = 0;
-        long visitors = 0;
+        long pageviews = 5000 + random.nextInt(15000);
+        long visitors = 1000 + random.nextInt(5000);
 
         return new DashboardStatsDTO(
                 pageviews,
@@ -63,9 +66,13 @@ public class DashboardServiceImpl implements DashboardService{
         List<TrafficStatsDTO> stats = new ArrayList<>();
 
         YearMonth current = YearMonth.now();
+        Random random = new Random();
 
         for(int i = 11; i >= 0; i--){
             YearMonth month = current.minusMonths(i);
+
+            long visits = 500 + random.nextInt(1500);
+
             stats.add(new TrafficStatsDTO(
                     month.getMonth()
                             .getDisplayName(TextStyle.SHORT, Locale.ENGLISH), 0));
@@ -79,13 +86,17 @@ public class DashboardServiceImpl implements DashboardService{
         List<EarningStatsDTO> earningStats = new ArrayList<>();
 
         YearMonth current = YearMonth.now();
+        Random random = new Random();
 
         for (int i = 11; i >= 0; i--){
             YearMonth month = current.minusMonths(i);
 
+            double amount = 50 + random.nextDouble() * 200;
+
             earningStats.add(new EarningStatsDTO(
                     month.getMonth()
-                            .getDisplayName(TextStyle.SHORT, Locale.ENGLISH), 0.0
+                            .getDisplayName(TextStyle.SHORT, Locale.ENGLISH),
+                    Math.round(amount * 100.0) / 100.0
             ));
         }
         return earningStats;

@@ -11,7 +11,7 @@ import pt.luis.blogapp.api.services.userServices.UserService;
 
 
 @RestController
-@RequestMapping("/api/blog ")
+@RequestMapping("/api/user")
 public class UserController{
 
 
@@ -23,35 +23,18 @@ public class UserController{
     }
 
 
-    @GetMapping("/username/{username}")
+    @GetMapping("/{username}")
     public ResponseEntity<UserResponseDTO> getByUsername(@PathVariable String username){
 
         UserResponseDTO dto = userService.getByUsername(username);
         return ResponseEntity.ok(dto);
     }
 
-    @GetMapping("/email/{email}")
-    public ResponseEntity<UserResponseDTO> getByEmail(@PathVariable String email){
+    @PutMapping("/email")
+    public ResponseEntity<UserResponseDTO> updateEmail(@PathVariable @Valid UpdateEmailDTO dto){
 
-        UserResponseDTO dto = userService.getByEmail(email);
-        return ResponseEntity.ok(dto);
-    }
-
-    @GetMapping("/role/{role}")
-    public ResponseEntity<UserResponseDTO> getByRole(@PathVariable UserRole role){
-
-        UserResponseDTO dto = userService.getByRole(role);
-        return ResponseEntity.ok(dto);
-    }
-
-    @PutMapping("/email/{email}")
-    public ResponseEntity<UserResponseDTO> updateEmail(
-            @PathVariable String email,
-            @RequestBody @Valid UpdateEmailDTO dto
-    ){
-
-        UserResponseDTO updated = userService.updateEmail(email, dto);
-        return ResponseEntity.ok(updated);
+        UserResponseDTO update = userService.updateEmail(dto);
+        return ResponseEntity.ok(update);
     }
 
     @PutMapping("/password")
