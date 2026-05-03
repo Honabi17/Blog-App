@@ -13,6 +13,12 @@ public interface CommentService {
     ResponseCommentDTO create(CreateCommentDTO dto);
 
     List<ResponseCommentDTO> getByAuthor(String author);
+    Page<ResponseCommentDTO> getAllPagedGlobal(
+            int page,
+            int size,
+            String sortBy,
+            String direction
+    );
     Page<ResponseCommentDTO> getAllPaged(
             Long postId,
             int page,

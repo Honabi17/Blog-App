@@ -1,7 +1,7 @@
 package pt.luis.blogapp.api.mappers;
 
+import pt.luis.blogapp.api.dto.categoryDTO.CategorySummaryDTO;
 import pt.luis.blogapp.api.dto.postDTO.*;
-import pt.luis.blogapp.api.models.entities.Category;
 import pt.luis.blogapp.api.models.entities.Post;
 import pt.luis.blogapp.api.models.entities.User;
 

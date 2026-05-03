@@ -124,6 +124,15 @@ public class PostServiceImpl implements PostService{
     }
 
     @Override
+    public List<PostResponseDTO> getByCategory(Long categoryId) {
+
+        return postRepository.findByCategoryId(categoryId)
+                .stream()
+                .map(PostMapper::toDTO)
+                .toList();
+    }
+
+    @Override
     public Page<PostResponseDTO> getAllPaged(int page, int size, String sortBy, String direction) {
 
         Sort sort = direction.equalsIgnoreCase("asc")

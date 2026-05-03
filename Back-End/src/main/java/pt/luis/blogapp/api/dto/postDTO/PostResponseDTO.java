@@ -1,5 +1,7 @@
 package pt.luis.blogapp.api.dto.postDTO;
 
+import pt.luis.blogapp.api.dto.categoryDTO.CategorySummaryDTO;
+
 import java.time.LocalDateTime;
 
 

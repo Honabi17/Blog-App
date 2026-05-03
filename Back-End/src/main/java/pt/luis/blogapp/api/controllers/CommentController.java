@@ -39,6 +39,19 @@ public class CommentController {
         return ResponseEntity.ok(result);
     }
 
+    @GetMapping("/all")
+    public ResponseEntity<Page<ResponseCommentDTO>> getAllPagedGlobal(
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "10") int size,
+            @RequestParam(defaultValue = "createAt") String sortBy,
+            @RequestParam(defaultValue = "desc") String direction
+    ){
+        Page<ResponseCommentDTO> result = commentService.getAllPagedGlobal(
+                page, size, sortBy, direction
+        );
+        return ResponseEntity.ok(result);
+    }
+
     @GetMapping
     public ResponseEntity<Page<ResponseCommentDTO>> getAllPaged(
             @RequestParam Long postId,

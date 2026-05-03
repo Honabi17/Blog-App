@@ -5,6 +5,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.data.repository.query.parser.Part;
 import org.springframework.stereotype.Service;
 import pt.luis.blogapp.api.dto.commentDTO.CreateCommentDTO;
 import pt.luis.blogapp.api.dto.commentDTO.ResponseCommentDTO;
@@ -93,6 +94,20 @@ public class CommentServiceImpl implements CommentService {
         return comments.stream()
                 .map(CommentMapper::toDTO)
                 .toList();
+    }
+
+    @Override
+    public Page<ResponseCommentDTO> getAllPagedGlobal(
+            int page, int size, String sortBy, String direction
+    ) {
+        Sort sort = direction.equalsIgnoreCase("asc")
+                ? Sort.by(sortBy).ascending()
+                : Sort.by(sortBy).descending();
+
+        Pageable pageable = PageRequest.of(page,size,sort);
+
+        return commentRepository.findAll(pageable)
+                .map(CommentMapper::toDTO);
     }
 
     @Override

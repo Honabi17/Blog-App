@@ -3,6 +3,7 @@ package pt.luis.blogapp.api.mappers;
 import pt.luis.blogapp.api.dto.categoryDTO.CategoryResponseDTO;
 import pt.luis.blogapp.api.dto.categoryDTO.CreateCategoryDTO;
 import pt.luis.blogapp.api.dto.categoryDTO.UpdateCategoryDTO;
+import pt.luis.blogapp.api.dto.postDTO.UserSummaryDTO;
 import pt.luis.blogapp.api.models.entities.Category;
 import pt.luis.blogapp.api.models.entities.User;
 
@@ -17,7 +18,10 @@ public class CategoryMapper {
                 category.getId(),
                 category.getName(),
                 category.getDescription(),
-                creatorId,
+                new UserSummaryDTO(
+                        category.getCreatedBy().getId(),
+                        category.getCreatedBy().getUsername()
+                ),
                 category.getCreatedAt(),
                 category.getUpdatedAt()
         );

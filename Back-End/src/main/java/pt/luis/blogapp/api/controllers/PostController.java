@@ -55,6 +55,13 @@ public class PostController {
         return ResponseEntity.ok(result);
     }
 
+    @GetMapping("/category/{categoryId}")
+    public ResponseEntity<List<PostResponseDTO>> getByCategory(@PathVariable Long categoryId){
+
+        List<PostResponseDTO> result = postService.getByCategory(categoryId);
+        return ResponseEntity.ok(result);
+    }
+
     @GetMapping
     public ResponseEntity<Page<PostResponseDTO>> getAllPaged(
             @RequestParam(defaultValue = "0") int page,

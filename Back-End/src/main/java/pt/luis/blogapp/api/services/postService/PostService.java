@@ -15,6 +15,7 @@ public interface PostService {
     PostResponseDTO getById(Long id);
     List<PostResponseDTO> getByTitle(String title);
     List<PostResponseDTO> getByAuthor(String author);
+    List<PostResponseDTO> getByCategory(Long categoryId);
     Page<PostResponseDTO> getAllPaged(
             int page, int size, String sortBy, String direction
     );
