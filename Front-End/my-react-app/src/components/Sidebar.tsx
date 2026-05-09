@@ -15,6 +15,7 @@ export default function Sidebar() {
         <span></span>
         <span></span>
         <span></span>
+        <span></span>
       </button>
       <aside className={`sidebar ${open ? "open" : ""}`}>
         {open && (
@@ -36,6 +37,9 @@ export default function Sidebar() {
           </NavLink>
           <NavLink to="/comments" onClick={() => isMobile && setOpen(false)}>
             💬 {open && "Comments"}
+          </NavLink>
+           <NavLink to="/settings" onClick={() => isMobile && setOpen(false)}>
+            ⚙️ {open && "Settings"}
           </NavLink>
         </nav>
         <button

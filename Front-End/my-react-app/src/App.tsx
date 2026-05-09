@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
-import Auth from "./pages/Auth";
+import Auth from "./pages/auth/Auth";
 import Landing from "./pages/Landing";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
@@ -11,6 +11,7 @@ import DashboardLayout from "./layouts/DashboardLayout";
 import PostPage from "./pages/PostPage";
 import PostDetailsPage from "./pages/PostDetailsPage";
 import CommentPage from "./pages/CommentPage";
+import SettingPage from "./pages/SettingPage";
 
 function App() {
   return (
@@ -66,6 +67,16 @@ function App() {
             <ProtectedRoute>
               <DashboardLayout>
                 <CommentPage />
+              </DashboardLayout>
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/settings"
+          element={
+            <ProtectedRoute>
+              <DashboardLayout>
+                <SettingPage />
               </DashboardLayout>
             </ProtectedRoute>
           }

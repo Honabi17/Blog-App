@@ -75,7 +75,7 @@ export default function LoginForm() {
 
       <div
         className="forgot-password"
-        onClick={() => navigate("/forgot-password")}
+        onClick={() => navigate("/auth/reset-password/request")}
       >
         Forgot your password
       </div>

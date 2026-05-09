@@ -13,3 +13,6 @@ api.interceptors.request.use((config) => {
 
     return config;
 })
+
+export const promoteUser = (username:string, newRole:string) =>
+    api.patch("/admin/promote", {username, newRole});

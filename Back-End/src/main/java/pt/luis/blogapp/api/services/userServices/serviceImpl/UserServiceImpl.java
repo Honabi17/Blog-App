@@ -108,7 +108,7 @@ public class UserServiceImpl implements UserService {
             throw new UserValidationException("Only ADMIN can change roles!");
         }
 
-        User user = userRepository.findById(dto.userId())
+        User user = userRepository.findByUsername(dto.username())
                 .orElseThrow(() -> new ResourceNotFoundException("User not found"));
 
         user.setRole(dto.newRole());

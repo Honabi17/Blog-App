@@ -1,0 +1,153 @@
+.settings-container{
+    padding: 2rem;
+    color: white;
+    max-width: 600px;
+    margin: 0 auto;
+
+    background: rgba(255,255,255,0.08);
+    backdrop-filter: blur(12px);
+    border-radius: 16px;
+    border: 1px solid rgba(255,255,255,0.15);
+
+    animation: fadeIn 0.4s ease;
+}
+
+.settings-title{
+    text-align: center;
+    margin-bottom: 1.5rem;
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.settings-tab{
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.settings-tab button{
+    padding: 0.6rem 1.4rem;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    color: white;
+
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.2);
+
+    transition: 0.25s ease;
+}
+
+.settings-tab button:hover{
+    background: rgba(255,255,255,0.25);
+    transform: translateY(-2px);
+}
+
+.settings-tab .active{
+    background: rgba(0,150,255,0.35);
+    border-color: rgba(0,150,255,0.8);
+}
+
+.settings-content{
+    margin-top: 1rem;
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn{
+    from{
+        opacity: 0;
+        transform: translateY(5px);
+    }
+    to{
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.admin-card,
+.profile-card {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
+  border-radius: 16px;
+  padding: 2rem;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: white;
+  animation: fadeIn 0.4s ease;
+  margin-top: 1rem;
+}
+
+.admin-card h2,
+.profile-card h2 {
+  margin-bottom: 1.5rem;
+  font-size: 1.6rem;
+  font-weight: 700;
+  text-align: center;
+}
+
+.admin-card input,
+.profile-card input,
+.admin-card select,
+.profile-card select {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  margin-bottom: 1rem;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+
+  background: rgba(255, 255, 255, 0.12);
+  color: white;
+  font-size: 1rem;
+
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: 0.25s ease;
+}
+
+.admin-card input:focus,
+.profile-card input:focus,
+.admin-card select:focus,
+.profile-card select:focus {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(0, 150, 255, 0.6);
+}
+
+.admin-card button,
+.profile-card button {
+  padding: 0.7rem 1.4rem;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  color: white;
+
+  background: rgba(0, 150, 255, 0.45);
+  border: 1px solid rgba(0, 150, 255, 0.7);
+
+  transition: 0.25s ease;
+  margin-right: 0.5rem;
+}
+
+.admin-card button:hover,
+.profile-card button:hover {
+  background: rgba(0, 150, 255, 0.65);
+  transform: translateY(-2px);
+}
+
+.profile-card button[type="button"] {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.profile-card button[type="button"]:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.admin-card p,
+.profile-card p {
+  margin-top: 1rem;
+  text-align: center;
+  font-weight: 600;
+  color: #7cdfff;
+}
